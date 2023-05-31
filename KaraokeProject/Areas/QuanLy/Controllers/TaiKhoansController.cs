@@ -42,8 +42,12 @@ namespace KaraokeProject.Areas.QuanLy.Controllers
             {
                 if(checkUser(tk.TenDangNhap, tk.MatKhau))
                 {
-                    FormsAuthentication.SetAuthCookie(tk.TenDangNhap, true);
-                    return RedirectToAction("Index", "../DichVus");
+                    var result = db.TaiKhoans.Where(x => x.TenDangNhap == tk.TenDangNhap).ToList();
+                    var temp = result.First().PhanQuyen;
+                    FormsAuthentication.SetAuthCookie(tk.TenDangNhap, true);   
+                    if(temp == "QL") return RedirectToAction("Index", "../DichVus");
+                    return RedirectToAction("Index", "../LoaiDichVus");
+
                 }
                 else ModelState.AddModelError("", "Tên đăng nhập hoặc tài khoản không đúng.");
             }
