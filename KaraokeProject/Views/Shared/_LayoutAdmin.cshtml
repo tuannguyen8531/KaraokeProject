@@ -3,7 +3,19 @@
     Layout = null;
     var nguoiDung = Session["NguoiDung"] as string;
     var phanQuyen = Session["PhanQuyen"] as string;
+    var show = "disabled";
+    if (phanQuyen == "Quản lý")
+    {
+        show = " ";
+    }
 }
+
+<style>
+    .disabled {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+</style>
 
 
 
@@ -132,7 +144,7 @@
                                     {
                                         <span>Chưa đăng nhập</span>
                                     }
-                                    </p>
+                                </p>
                                 <p class="text-muted mb-1">
                                     @if (!string.IsNullOrEmpty(phanQuyen))
                                     {
@@ -196,7 +208,7 @@
                                 <li><a href="edit-room.html"> Tìm kiếm </a></li>
                             </ul>
                         </li>
-                        <li class="submenu">
+                        <li class="submenu @show">
                             <a href="#"><i class="fas fa-user"></i> <span> Nhân Viên </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
                                 <li><a href="all-staff.html"> Danh sách </a></li>
@@ -205,17 +217,8 @@
                             </ul>
                         </li>
                         <li> <a href="pricing.html"><i class="far fa-money-bill-alt"></i> <span>Tính tiền</span></a> </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-book"></i> <span> Bảng lương </span> <span class="menu-arrow"></span></a>
-                            <ul class="submenu_class" style="display: none;">
-                                <li><a href="employees.html">Employees List </a></li>
-                                <li><a href="leaves.html">Leaves </a></li>
-                                <li><a href="holidays.html">Holidays </a></li>
-                                <li><a href="attendance.html">Attendance </a></li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="#"><i class="far fa-money-bill-alt"></i> <span> Tài khoản </span> <span class="menu-arrow"></span></a>
+                        <li class="submenu @show">
+                            <a href="#"><i class="fas fa-book"></i> <span> Tài khoản </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
                                 <li><a href="invoices.html">Invoices </a></li>
                                 <li><a href="payments.html">Payments </a></li>
