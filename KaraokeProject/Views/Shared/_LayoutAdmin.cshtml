@@ -1,0 +1,236 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Karaoke Khánh Dương</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.png">
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/Content/assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/feathericon.min.css">
+    <link rel="stylehseet" href="https://cdn.oesmith.co.uk/morris-0.5.1.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="~/Content/assets/plugins/morris/morris.css">
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+    <link rel="stylesheet" href="~/Content/assets/plugins/datatables/datatables.min.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo"> <span class="logoclass">KHÁNH DƯƠNG</span> </a>
+                <a href="index.html" class="logo logo-small"> <img src="~/Content/assets/img/karaoke_logo.png" alt="Logo" width="30" height="30"> </a>
+            </div>
+            <a href="javascript:void(0);" id="toggle_btn"> <i class="fe fe-text-align-left"></i> </a>
+            <a class="mobile_btn" id="mobile_btn"> <i class="fas fa-bars"></i> </a>
+            <ul class="nav user-menu">
+                <li class="nav-item dropdown noti-dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <i class="fe fe-bell"></i> <span class="badge badge-pill">3</span> </a>
+                    <div class="dropdown-menu notifications">
+                        <div class="topnav-dropdown-header"> <span class="notification-title">Notifications</span> <a href="javascript:void(0)" class="clear-noti"> Clear All </a> </div>
+                        <div class="noti-content">
+                            <ul class="notification-list">
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media">
+                                            <span class="avatar avatar-sm">
+                                                <img class="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
+                                            </span>
+                                            <div class="media-body">
+                                                <p class="noti-details"><span class="noti-title">Carlson Tech</span> has approved <span class="noti-title">your estimate</span></p>
+                                                <p class="noti-time"><span class="notification-time">4 mins ago</span> </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media">
+                                            <span class="avatar avatar-sm">
+                                                <img class="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-11.jpg">
+                                            </span>
+                                            <div class="media-body">
+                                                <p class="noti-details">
+                                                    <span class="noti-title">
+                                                        International Software
+                                                        Inc
+                                                    </span> has sent you a invoice in the amount of <span class="noti-title">$218</span>
+                                                </p>
+                                                <p class="noti-time"><span class="notification-time">6 mins ago</span> </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media">
+                                            <span class="avatar avatar-sm">
+                                                <img class="avatar-img rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-17.jpg">
+                                            </span>
+                                            <div class="media-body">
+                                                <p class="noti-details">
+                                                    <span class="noti-title">John Hendry</span> sent a cancellation request <span class="noti-title">
+                                                        Apple iPhone
+                                                        XR
+                                                    </span>
+                                                </p>
+                                                <p class="noti-time"><span class="notification-time">8 mins ago</span> </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media">
+                                            <span class="avatar avatar-sm">
+                                                <img class="avatar-img rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-13.jpg">
+                                            </span>
+                                            <div class="media-body">
+                                                <p class="noti-details">
+                                                    <span class="noti-title">
+                                                        Mercury Software
+                                                        Inc
+                                                    </span> added a new product <span class="noti-title">
+                                                        Apple
+                                                        MacBook Pro
+                                                    </span>
+                                                </p>
+                                                <p class="noti-time"><span class="notification-time">12 mins ago</span> </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-dropdown-footer"> <a href="#">Xem tất cả</a> </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt=""></span> </a>
+                    <div class="dropdown-menu">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm"> <img src="~/Content/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle"> </div>
+                            <div class="user-text">
+                                <p class="text-muted">Dương Anh Tuấn</p>
+                                <p class="text-muted mb-0">Quản lý</p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="profile.html">Trang cá nhân</a>
+                        <a class="dropdown-item" href="settings.html">Thiết lập</a>
+                        <a class="dropdown-item" href="login.html">Đăng xuất</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="top-nav-search">
+                <form>
+                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="active"> <a href="index.html"><i class="fas fa-tachometer-alt"></i> <span>Trang Chủ</span></a> </li>
+                        <li class="list-divider"></li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-suitcase"></i> <span> Đặt Phòng </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="all-booking.html"> Tất cả </a></li>
+                                <li><a href="add-booking.html"> Thêm đơn </a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-cube"></i> <span> Kho </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="@Url.Action("Index","DichVus")"> Dịch vụ </a></li>
+                                <li><a href="@Url.Action("Index","LoaiDichVus")"> Loại dịch vụ </a></li>
+                                <li><a href="add-booking.html"> Nhà cung cấp </a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-user"></i> <span> Khách Hàng </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="all-customer.html"> Danh sách </a></li>
+                                <li><a href="edit-customer.html"> Tìm kiếm </a></li>
+                                <li><a href="add-customer.html"> Thêm mới </a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-key"></i> <span> Phòng Bàn </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="all-rooms.html"> Danh sách </a></li>
+                                <li><a href="edit-room.html"> Chỉnh sửa </a></li>
+                                <li><a href="add-room.html"> Thêm mới </a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-user"></i> <span> Nhân Viên </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="all-staff.html"> Danh sách </a></li>
+                                <li><a href="edit-staff.html"> Tra cứu </a></li>
+                                <li><a href="add-staff.html"> Thêm mới </a></li>
+                            </ul>
+                        </li>
+                        <li> <a href="pricing.html"><i class="far fa-money-bill-alt"></i> <span>Tính tiền</span></a> </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-book"></i> <span> Bảng lương </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="employees.html">Employees List </a></li>
+                                <li><a href="leaves.html">Leaves </a></li>
+                                <li><a href="holidays.html">Holidays </a></li>
+                                <li><a href="attendance.html">Attendance </a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="far fa-money-bill-alt"></i> <span> Tài khoản </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="invoices.html">Invoices </a></li>
+                                <li><a href="payments.html">Payments </a></li>
+                                <li><a href="expenses.html">Expenses </a></li>
+                                <li><a href="taxes.html">Taxes </a></li>
+                                <li><a href="provident-fund.html">Provident Fund </a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fe fe-table"></i> <span> Thống kê </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="expense-reports.html">Tồn kho</a></li>
+                                <li><a href="invoice-reports.html">Doanh thu</a></li>
+                            </ul>
+                        </li>
+                        <li> <a href="settings.html"><i class="fas fa-cog"></i> <span>Cài đặt</span></a> </li>
+                        <li class="list-divider"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="~/Content/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="~/Content/assets/js/popper.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/plugins/morris/morris.min.js"></script>
+    <script src="~/Content/assets/js/chart.morris.js"></script>
+    <script src="~/Content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/assets/plugins/datatables/datatables.min.js"></script>
+    <script src="~/Content/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/assets/plugins/raphael/raphael.min.js"></script>
+    <script src="~/Content/assets/js/script.js"></script>
+</body>
+
+</html>

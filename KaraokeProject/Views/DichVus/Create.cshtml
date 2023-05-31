@@ -1,0 +1,103 @@
+﻿@model KaraokeProject.Models.DichVu
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title mt-5">Thêm dịch vụ mới</h3>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("Create", "DichVus", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row formtype">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaDichVu, "Mã Dịch vụ")
+                            <input type="text" readonly disabled class="form-control" value="@ViewBag.MaDV" />
+                            @Html.ValidationMessageFor(model => model.MaDichVu, "", new { @class = "w3-text-red" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TenDichVu, "Tên Dịch vụ")
+                            @Html.EditorFor(model => model.TenDichVu, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LoaiDichVu, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <table style="width: 120%;">
+                                <tr>
+                                    @Html.LabelFor(model => model.LoaiDichVu, "Loại Dịch vụ")
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DropDownList("LoaiDichVu", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LoaiDichVu, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-info" value="+" style="margin-left: 10px;" onclick="window.location.href = '@Url.Action("Create", "LoaiDichVus")'"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <table style="width: 130%;">
+                                <tr>
+                                    @Html.LabelFor(model => model.DonViTinh, "Đơn vị tính")
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DropDownList("DonViTinh", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DonViTinh, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-info" value="+" style="margin-left: 10px;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NhaCungCap, "Nhà cung cấp")
+                            @Html.DropDownList("NhaCungCap", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NhaCungCap, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DonGia, "Đơn giá")
+                            @Html.EditorFor(model => model.DonGia, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SoLuongTon, "Số lượng nhập")
+                            @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-center">
+            <input type="submit" value="Thêm" class="btn btn-primary w3-margin-right" />
+            <input type="button" value="Hủy" class="btn btn-danger" onclick="window.location.href = '@Url.Action("Index", "DichVus")'" />
+        </div>
+    }
+</div>
+

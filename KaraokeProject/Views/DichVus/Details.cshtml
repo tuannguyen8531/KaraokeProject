@@ -1,0 +1,67 @@
+﻿@model KaraokeProject.Models.DichVu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DichVu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDichVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDichVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonViTinh1.TenDonVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonViTinh1.TenDonVi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiDichVu1.TenLoaiDV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiDichVu1.TenLoaiDV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaCungCap1.TenNhaCungCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaCungCap1.TenNhaCungCap)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDichVu }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

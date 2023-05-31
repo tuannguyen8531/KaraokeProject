@@ -1,0 +1,27 @@
+﻿@model KaraokeProject.Models.LoaiDichVu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LoaiDichVu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLoaiDV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoaiDV)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaLoaiDV }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

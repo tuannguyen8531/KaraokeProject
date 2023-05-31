@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c88fb3203fe8436c8e42df2dc82595bc" Name="Diagram1">
+        <EntityTypeShape EntityType="QLKaraokeModel.ChiTietHoaDon" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.ChiTietPhieuNhap" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.DatPhong" Width="1.5" PointX="0.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.DichVu" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.DonViTinh" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.HoaDon" Width="1.5" PointX="3" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.KhachHang" Width="1.5" PointX="1.5" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.LoaiDichVu" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.LoaiPhong" Width="1.5" PointX="1.5" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.NhaCungCap" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.NhanVien" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.PhanQuyen" Width="1.5" PointX="1.5" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.PhieuNhap" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.PhongHat" Width="1.5" PointX="1.5" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.TaiKhoan" Width="1.5" PointX="1.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.ThamSo" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKaraokeModel.TrangThai" Width="1.5" PointX="1.5" PointY="38.75" IsExpanded="true" />
+        <AssociationConnector Association="QLKaraokeModel.FK__ChiTietHo__MaDic__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__ChiTietHo__MaHoa__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__ChiTietPh__MaDic__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__ChiTietPh__MaPhi__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__DatPhong__MaKhac__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__DatPhong__MaPhon__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__DatPhong__TrangT__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__HoaDon__MaDatPho__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__DichVu__DonViTin__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__DichVu__LoaiDich__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__DichVu__NhaCungC__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__HoaDon__MaNhanVi__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__KhachHang__MaTai__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__PhongHat__LoaiPh__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__NhanVien__MaTaiK__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__PhieuNhap__MaNha__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__TaiKhoan__PhanQu__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKaraokeModel.FK__PhongHat__TrangT__36B12243" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
