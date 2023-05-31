@@ -10,109 +10,120 @@ using KaraokeProject.Models;
 
 namespace KaraokeProject.Controllers
 {
-    public class LoaiDichVusController : Controller
+    public class NhaCungCapsController : Controller
     {
         private QLKaraokeEntities db = new QLKaraokeEntities();
 
-        // GET: LoaiDichVus
-        public ActionResult Index()
+        string getMa(string loai)
         {
-            return View(db.LoaiDichVus.ToList());
+            var maMax = db.NhaCungCaps.ToList().Select(n => n.MaNhaCungCap).Max();
+            int ma = int.Parse(maMax.Substring(2)) + 1;
+            string type = String.Concat("0", ma.ToString());
+            return loai + type.Substring(ma.ToString().Length - 1);
         }
 
-        // GET: LoaiDichVus/Details/5
+        // GET: NhaCungCaps
+        public ActionResult Index()
+        {
+            return View(db.NhaCungCaps.ToList());
+        }
+
+        // GET: NhaCungCaps/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LoaiDichVu loaiDichVu = db.LoaiDichVus.Find(id);
-            if (loaiDichVu == null)
+            NhaCungCap nhaCungCap = db.NhaCungCaps.Find(id);
+            if (nhaCungCap == null)
             {
                 return HttpNotFound();
             }
-            return View(loaiDichVu);
+            return View(nhaCungCap);
         }
 
-        // GET: LoaiDichVus/Create
+        // GET: NhaCungCaps/Create
         public ActionResult Create()
         {
+            ViewBag.MaNCC = getMa("NC");
             return View();
         }
 
-        // POST: LoaiDichVus/Create
+        // POST: NhaCungCaps/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLoaiDV,TenLoaiDV")] LoaiDichVu loaiDichVu)
+        public ActionResult Create([Bind(Include = "MaNhaCungCap,TenNhaCungCap,SoDienThoai,DiaChi")] NhaCungCap nhaCungCap)
         {
+            string id = getMa("NC");
             if (ModelState.IsValid)
             {
-                db.LoaiDichVus.Add(loaiDichVu);
+                nhaCungCap.MaNhaCungCap = id;
+                db.NhaCungCaps.Add(nhaCungCap);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(loaiDichVu);
+            return View(nhaCungCap);
         }
 
-        // GET: LoaiDichVus/Edit/5
+        // GET: NhaCungCaps/Edit/5
         public ActionResult Edit(string id)
         {
-            ViewBag.MaDV = id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LoaiDichVu loaiDichVu = db.LoaiDichVus.Find(id);
-            if (loaiDichVu == null)
+            NhaCungCap nhaCungCap = db.NhaCungCaps.Find(id);
+            ViewBag.MaNCC = id;
+            if (nhaCungCap == null)
             {
                 return HttpNotFound();
             }
-            return View(loaiDichVu);
+            return View(nhaCungCap);
         }
 
-        // POST: LoaiDichVus/Edit/5
+        // POST: NhaCungCaps/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLoaiDV,TenLoaiDV")] LoaiDichVu loaiDichVu)
+        public ActionResult Edit([Bind(Include = "MaNhaCungCap,TenNhaCungCap,SoDienThoai,DiaChi")] NhaCungCap nhaCungCap)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(loaiDichVu).State = EntityState.Modified;
+                db.Entry(nhaCungCap).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(loaiDichVu);
+            return View(nhaCungCap);
         }
 
-        // GET: LoaiDichVus/Delete/5
+        // GET: NhaCungCaps/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LoaiDichVu loaiDichVu = db.LoaiDichVus.Find(id);
-            ViewBag.MaLoai = loaiDichVu.TenLoaiDV;
-            if (loaiDichVu == null)
+            NhaCungCap nhaCungCap = db.NhaCungCaps.Find(id);
+            ViewBag.MaNCC = nhaCungCap.TenNhaCungCap;
+            if (nhaCungCap == null)
             {
                 return HttpNotFound();
             }
-            return View(loaiDichVu);
+            return View(nhaCungCap);
         }
 
-        // POST: LoaiDichVus/Delete/5
+        // POST: NhaCungCaps/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            LoaiDichVu loaiDichVu = db.LoaiDichVus.Find(id);
-            db.LoaiDichVus.Remove(loaiDichVu);
+            NhaCungCap nhaCungCap = db.NhaCungCaps.Find(id);
+            db.NhaCungCaps.Remove(nhaCungCap);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

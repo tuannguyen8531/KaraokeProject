@@ -1,0 +1,59 @@
+﻿@model IEnumerable<KaraokeProject.Models.TaiKhoan>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNguoiDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenDangNhap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhanQuyen1.TenPhanQuyen)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNguoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDangNhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhanQuyen1.TenPhanQuyen)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.MaTaiKhoan }) |
+                @Html.ActionLink("Details", "Details", new { id=item.MaTaiKhoan }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.MaTaiKhoan })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

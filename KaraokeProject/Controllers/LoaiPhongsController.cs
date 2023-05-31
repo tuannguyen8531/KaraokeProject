@@ -10,109 +10,120 @@ using KaraokeProject.Models;
 
 namespace KaraokeProject.Controllers
 {
-    public class LoaiDichVusController : Controller
+    public class LoaiPhongsController : Controller
     {
         private QLKaraokeEntities db = new QLKaraokeEntities();
 
-        // GET: LoaiDichVus
-        public ActionResult Index()
+        string getMa(string loai)
         {
-            return View(db.LoaiDichVus.ToList());
+            var maMax = db.LoaiPhongs.ToList().Select(n => n.MaLoaiPhong).Max();
+            int ma = int.Parse(maMax.Substring(2)) + 1;
+            string type = String.Concat("0", ma.ToString());
+            return loai + type.Substring(ma.ToString().Length - 1);
         }
 
-        // GET: LoaiDichVus/Details/5
+        // GET: LoaiPhongs
+        public ActionResult Index()
+        {
+            return View(db.LoaiPhongs.ToList());
+        }
+
+        // GET: LoaiPhongs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LoaiDichVu loaiDichVu = db.LoaiDichVus.Find(id);
-            if (loaiDichVu == null)
+            LoaiPhong loaiPhong = db.LoaiPhongs.Find(id);
+            if (loaiPhong == null)
             {
                 return HttpNotFound();
             }
-            return View(loaiDichVu);
+            return View(loaiPhong);
         }
 
-        // GET: LoaiDichVus/Create
+        // GET: LoaiPhongs/Create
         public ActionResult Create()
         {
+            ViewBag.MaLP = getMa("LP");
             return View();
         }
 
-        // POST: LoaiDichVus/Create
+        // POST: LoaiPhongs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLoaiDV,TenLoaiDV")] LoaiDichVu loaiDichVu)
+        public ActionResult Create([Bind(Include = "MaLoaiPhong,TenLoaiPhong,GiaPhong")] LoaiPhong loaiPhong)
         {
+            string id = getMa("LP");
             if (ModelState.IsValid)
             {
-                db.LoaiDichVus.Add(loaiDichVu);
+                loaiPhong.MaLoaiPhong = id;
+                db.LoaiPhongs.Add(loaiPhong);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(loaiDichVu);
+            return View(loaiPhong);
         }
 
-        // GET: LoaiDichVus/Edit/5
+        // GET: LoaiPhongs/Edit/5
         public ActionResult Edit(string id)
         {
-            ViewBag.MaDV = id;
+            ViewBag.ID = id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LoaiDichVu loaiDichVu = db.LoaiDichVus.Find(id);
-            if (loaiDichVu == null)
+            LoaiPhong loaiPhong = db.LoaiPhongs.Find(id);
+            if (loaiPhong == null)
             {
                 return HttpNotFound();
             }
-            return View(loaiDichVu);
+            return View(loaiPhong);
         }
 
-        // POST: LoaiDichVus/Edit/5
+        // POST: LoaiPhongs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLoaiDV,TenLoaiDV")] LoaiDichVu loaiDichVu)
+        public ActionResult Edit([Bind(Include = "MaLoaiPhong,TenLoaiPhong,GiaPhong")] LoaiPhong loaiPhong)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(loaiDichVu).State = EntityState.Modified;
+                db.Entry(loaiPhong).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(loaiDichVu);
+            return View(loaiPhong);
         }
 
-        // GET: LoaiDichVus/Delete/5
+        // GET: LoaiPhongs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LoaiDichVu loaiDichVu = db.LoaiDichVus.Find(id);
-            ViewBag.MaLoai = loaiDichVu.TenLoaiDV;
-            if (loaiDichVu == null)
+            LoaiPhong loaiPhong = db.LoaiPhongs.Find(id);
+            ViewBag.ID = loaiPhong.TenLoaiPhong;
+            if (loaiPhong == null)
             {
                 return HttpNotFound();
             }
-            return View(loaiDichVu);
+            return View(loaiPhong);
         }
 
-        // POST: LoaiDichVus/Delete/5
+        // POST: LoaiPhongs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            LoaiDichVu loaiDichVu = db.LoaiDichVus.Find(id);
-            db.LoaiDichVus.Remove(loaiDichVu);
+            LoaiPhong loaiPhong = db.LoaiPhongs.Find(id);
+            db.LoaiPhongs.Remove(loaiPhong);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

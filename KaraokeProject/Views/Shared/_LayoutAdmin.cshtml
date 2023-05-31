@@ -1,7 +1,11 @@
 ﻿
 @{
     Layout = null;
+    var nguoiDung = Session["NguoiDung"] as string;
+    var phanQuyen = Session["PhanQuyen"] as string;
 }
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -119,13 +123,31 @@
                         <div class="user-header">
                             <div class="avatar avatar-sm"> <img src="~/Content/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle"> </div>
                             <div class="user-text">
-                                <p class="text-muted">Dương Anh Tuấn</p>
-                                <p class="text-muted mb-0">Quản lý</p>
-                            </div>
+                                <p class="text-muted">
+                                    @if (!string.IsNullOrEmpty(nguoiDung))
+                                    {
+                                        @nguoiDung
+                                    }
+                                    else
+                                    {
+                                        <span>Chưa đăng nhập</span>
+                                    }
+                                    </p>
+                                <p class="text-muted mb-1">
+                                    @if (!string.IsNullOrEmpty(phanQuyen))
+                                    {
+                                        @phanQuyen
+                                    }
+                                    else
+                                    {
+                                        <span>Chưa đăng nhập</span>
+                                    }
+                                </p>
+                                </div>
                         </div>
                         <a class="dropdown-item" href="profile.html">Trang cá nhân</a>
                         <a class="dropdown-item" href="settings.html">Thiết lập</a>
-                        <a class="dropdown-item" href="login.html">Đăng xuất</a>
+                        <a class="dropdown-item" href="@Url.Action("Logout","QuanLy/TaiKhoans")">Đăng xuất</a>
                     </div>
                 </li>
             </ul>
@@ -154,7 +176,8 @@
                             <ul class="submenu_class" style="display: none;">
                                 <li><a href="@Url.Action("Index","DichVus")"> Dịch vụ </a></li>
                                 <li><a href="@Url.Action("Index","LoaiDichVus")"> Loại dịch vụ </a></li>
-                                <li><a href="add-booking.html"> Nhà cung cấp </a></li>
+                                <li><a href="@Url.Action("Index","NhaCungCaps")"> Nhà cung cấp </a></li>
+                                <li><a href="add-booking.html"> Nhập kho </a></li>
                             </ul>
                         </li>
                         <li class="submenu">
@@ -168,9 +191,9 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-key"></i> <span> Phòng Bàn </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="all-rooms.html"> Danh sách </a></li>
-                                <li><a href="edit-room.html"> Chỉnh sửa </a></li>
-                                <li><a href="add-room.html"> Thêm mới </a></li>
+                                <li><a href="@Url.Action("Index","PhongHats")"> Danh sách </a></li>
+                                <li><a href="@Url.Action("Index","LoaiPhongs")"> Loại phòng </a></li>
+                                <li><a href="edit-room.html"> Tìm kiếm </a></li>
                             </ul>
                         </li>
                         <li class="submenu">
@@ -231,6 +254,9 @@
     <script src="~/Content/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="~/Content/assets/plugins/raphael/raphael.min.js"></script>
     <script src="~/Content/assets/js/script.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 </body>
 
 </html>
