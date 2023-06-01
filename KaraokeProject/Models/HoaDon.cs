@@ -25,6 +25,7 @@ namespace KaraokeProject.Models
         public string MaNhanVien { get; set; }
         public string MaDatPhong { get; set; }
         public Nullable<int> TongTien { get; set; }
+        public Nullable<System.TimeSpan> GioRa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }

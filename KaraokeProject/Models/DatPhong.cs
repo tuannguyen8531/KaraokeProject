@@ -11,7 +11,8 @@ namespace KaraokeProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DatPhong
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,8 @@ namespace KaraokeProject.Models
         }
     
         public string MaDatPhong { get; set; }
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         public System.TimeSpan GioVao { get; set; }
-        public System.TimeSpan GioRa { get; set; }
         public Nullable<System.DateTime> NgayDat { get; set; }
         public string MaKhachHang { get; set; }
         public string MaPhongHat { get; set; }

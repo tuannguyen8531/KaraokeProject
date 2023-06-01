@@ -1,0 +1,59 @@
+﻿@model KaraokeProject.Models.DatPhong
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DatPhong</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GioVao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioVao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.TenKhachHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.TenKhachHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhongHat.TenPhongHat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhongHat.TenPhongHat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai1.TenTrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai1.TenTrangThai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDatPhong }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

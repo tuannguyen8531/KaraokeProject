@@ -1,0 +1,64 @@
+﻿@model IEnumerable<KaraokeProject.Models.DatPhong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="mt-5">
+                    <h4 class="card-title float-left mt-2">Đơn đặt phòng</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="pricing py-5">
+                <div class="container">
+                    <div class="row mt-5">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-3">
+                                <div class="card mb-5 mb-lg-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-muted text-uppercase text-center">@Html.DisplayFor(modelItem => item.PhongHat.LoaiPhong1.TenLoaiPhong)</h5>
+                                        <h6 class="card-price text-center mt-3 ">@Html.DisplayFor(modelItem => item.PhongHat.TenPhongHat)</h6>
+                                        <hr> 
+                                        <ul class="fa-ul">
+                                            <li>
+                                                <span class="fa-li"><i class="far fa-clock"></i></span>Giờ vào: @Html.DisplayFor(modelItem => item.GioVao)
+                                            </li>
+                                            <li><span class="fa-li"><i class="fas fa-user-alt"></i></span>@Html.DisplayFor(modelItem => item.KhachHang.TenKhachHang)</li>
+                                            <li><span class="fa-li"><i class="fas fa-calendar-alt"></i></span>Ngày đặt: @(item.NgayDat.HasValue ? item.NgayDat.Value.ToString("dd/MM/yyyy") : "")</li>
+                                            <li><span class="fa-li"><i class="fas fa-microphone-alt"></i></span>@Html.DisplayFor(modelItem => item.TrangThai1.TenTrangThai)</li>
+                                        </ul>
+                                        @if (item.TrangThai == "HD")
+                                        {
+                                            <a href="@Url.Action("Create","HoaDons", new { id = item.MaDatPhong })" class="btn btn-block btn-primary text-uppercase">Thanh Toán</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="" class="btn btn-block btn-primary text-uppercase disabled">Đã thanh toán</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-lg-3">
+                            <div class="card mb-5 mb-lg-3">
+                                <div class="card-body">
+                                    <a href="@Url.Action("Create","DatPhongs")" class="btn btn-block btn-primary text-uppercase">add</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+

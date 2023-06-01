@@ -1,0 +1,77 @@
+﻿@model KaraokeProject.Models.NhanVien
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title mt-5">Thêm loại dịch vụ</h3>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("Create", "NhanViens", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-4" style="margin: 0 auto;">
+                <div class="row formtype">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaNhanVien, "Mã Nhân viên")
+                            <input type="text" readonly disabled class="form-control" value="@ViewBag.ID" />
+                            @Html.ValidationMessageFor(model => model.MaNhanVien, "", new { @class = "w3-text-red" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TenNhanVien, "Tên Nhân viên")
+                            @Html.EditorFor(model => model.TenNhanVien, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenNhanVien, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Luong, "Lương")
+                            @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Luong, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NgaySinh, "Ngày sinh")
+                            @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.GioiTinh, "Giới tính")
+                            @Html.RadioButtonFor(model => model.GioiTinh, "True", new { @checked = "checked", @class = "w3-radio w3-margin-left" })
+                            <label>Nam</label>
+                            @Html.RadioButtonFor(model => model.GioiTinh, "False", new { @class = "w3-radio w3-margin-left" })
+                            <label>Nữ</label>
+                            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "w3-text-red" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaTaiKhoan, "Tài khoản")
+                            @Html.DropDownList("MaTai", null, "Không có", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MaTaiKhoan, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-center">
+            <input type="submit" value="Thêm" class="btn btn-primary w3-margin-right" />
+            <input type="button" value="Hủy" class="btn btn-danger" onclick="window.location.href = '@Url.Action("Index", "NhanViens")'" />
+        </div>
+    }
+</div>
+

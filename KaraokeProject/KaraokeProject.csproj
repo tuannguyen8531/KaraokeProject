@@ -128,12 +128,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DatPhongsController.cs" />
     <Compile Include="Controllers\DichVusController.cs" />
+    <Compile Include="Controllers\HoaDonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangsController.cs" />
     <Compile Include="Controllers\LoaiDichVusController.cs" />
     <Compile Include="Controllers\LoaiPhongsController.cs" />
     <Compile Include="Controllers\NhaCungCapsController.cs" />
+    <Compile Include="Controllers\NhanViensController.cs" />
     <Compile Include="Controllers\PhongHatsController.cs" />
     <Compile Include="Controllers\TaiKhoansController.cs" />
     <Compile Include="Global.asax.cs">
@@ -389,6 +392,21 @@
     <Content Include="Views\TaiKhoans\Edit.cshtml" />
     <Content Include="Views\TaiKhoans\Index.cshtml" />
     <Content Include="Views\TaiKhoans\Login.cshtml" />
+    <Content Include="Views\NhanViens\Create.cshtml" />
+    <Content Include="Views\NhanViens\Delete.cshtml" />
+    <Content Include="Views\NhanViens\Details.cshtml" />
+    <Content Include="Views\NhanViens\Edit.cshtml" />
+    <Content Include="Views\NhanViens\Index.cshtml" />
+    <Content Include="Views\DatPhongs\Create.cshtml" />
+    <Content Include="Views\DatPhongs\Delete.cshtml" />
+    <Content Include="Views\DatPhongs\Details.cshtml" />
+    <Content Include="Views\DatPhongs\Edit.cshtml" />
+    <Content Include="Views\DatPhongs\Index.cshtml" />
+    <Content Include="Views\HoaDons\Create.cshtml" />
+    <Content Include="Views\HoaDons\Delete.cshtml" />
+    <Content Include="Views\HoaDons\Details.cshtml" />
+    <Content Include="Views\HoaDons\Edit.cshtml" />
+    <Content Include="Views\HoaDons\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

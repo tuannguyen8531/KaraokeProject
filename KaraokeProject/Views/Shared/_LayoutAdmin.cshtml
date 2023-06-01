@@ -201,8 +201,8 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-suitcase"></i> <span> Đặt Phòng </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="all-booking.html"> Tất cả </a></li>
-                                <li><a href="add-booking.html"> Thêm đơn </a></li>
+                                <li><a href="@Url.Action("Index","DatPhongs")"> Tất cả </a></li>
+                                <li><a href="@Url.Action("Create","DatPhongs")"> Thêm đơn </a></li>
                             </ul>
                         </li>
                         <li class="submenu">
@@ -233,9 +233,9 @@
                         <li class="submenu @show">
                             <a href="#"><i class="fas fa-user"></i> <span> Nhân Viên </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="all-staff.html"> Danh sách </a></li>
+                                <li><a href="@Url.Action("Index","NhanViens")"> Danh sách </a></li>
                                 <li><a href="edit-staff.html"> Tra cứu </a></li>
-                                <li><a href="add-staff.html"> Thêm mới </a></li>
+                                <li><a href="@Url.Action("Create","NhanViens")"> Thêm mới </a></li>
                             </ul>
                         </li>
                         <li> <a href="pricing.html"><i class="far fa-money-bill-alt"></i> <span>Tính tiền</span></a> </li>
@@ -252,7 +252,7 @@
                         <li class="submenu">
                             <a href="#"><i class="fe fe-table"></i> <span> Thống kê </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="expense-reports.html">Tồn kho</a></li>
+                                <li><a href="@Url.Action("Index","HoaDons")">Tồn kho</a></li>
                                 <li><a href="invoice-reports.html">Doanh thu</a></li>
                             </ul>
                         </li>
