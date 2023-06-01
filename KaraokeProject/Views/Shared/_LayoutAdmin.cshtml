@@ -4,6 +4,11 @@
     var nguoiDung = Session["NguoiDung"] as string;
     var phanQuyen = Session["PhanQuyen"] as string;
     var show = "disabled";
+    bool login = false;
+    if(!string.IsNullOrEmpty(nguoiDung))
+    {
+        login = true;
+    }
     if (phanQuyen == "Quản lý")
     {
         show = " ";
@@ -130,7 +135,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown has-arrow">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt=""></span> </a>
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <span class="user-img"><img class="rounded-circle" src="~/Content/assets/img/profiles/avatar-01.jpg" width="31" alt=""></span> </a>
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm"> <img src="~/Content/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle"> </div>
@@ -142,7 +147,7 @@
                                     }
                                     else
                                     {
-                                        <span>Chưa đăng nhập</span>
+                                        <span></span>
                                     }
                                 </p>
                                 <p class="text-muted mb-1">
@@ -152,14 +157,31 @@
                                     }
                                     else
                                     {
-                                        <span>Chưa đăng nhập</span>
+                                        <span></span>
                                     }
                                 </p>
                                 </div>
                         </div>
-                        <a class="dropdown-item" href="profile.html">Trang cá nhân</a>
-                        <a class="dropdown-item" href="settings.html">Thiết lập</a>
-                        <a class="dropdown-item" href="@Url.Action("Logout","QuanLy/TaiKhoans")">Đăng xuất</a>
+                        <div>
+                            @if (!login)
+                            {
+                                <a class="dropdown-item w3-center" href="@Url.Action("Logout","TaiKhoans")">
+                                    <i class="fa fa-sign-in-alt" style="margin-right: 10px"></i>Đăng nhập
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="dropdown-item w3-center" href="profile.html">
+                                    <i class="fas fa-user" style="margin-right: 10px"></i>Trang cá nhân
+                                </a>
+                                <a class="dropdown-item w3-center" href="settings.html">
+                                    <i class="fas fa-cog" style="margin-right: 10px"></i>Thiết lập
+                                </a>
+                                <a class="dropdown-item w3-center" href="@Url.Action("Logout","TaiKhoans")">
+                                    <i class="fa fa-sign-out-alt" style="margin-right: 10px"></i>Đăng xuất
+                                </a>
+                            }
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -195,9 +217,9 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-user"></i> <span> Khách Hàng </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="all-customer.html"> Danh sách </a></li>
+                                <li><a href="@Url.Action("Index","KhachHangs")"> Danh sách </a></li>
                                 <li><a href="edit-customer.html"> Tìm kiếm </a></li>
-                                <li><a href="add-customer.html"> Thêm mới </a></li>
+                                <li><a href="@Url.Action("Create","KhachHangs")"> Thêm mới </a></li>
                             </ul>
                         </li>
                         <li class="submenu">

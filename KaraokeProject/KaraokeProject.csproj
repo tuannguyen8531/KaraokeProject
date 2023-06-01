@@ -128,14 +128,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\QuanLy\Controllers\TaiKhoansController.cs" />
-    <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
     <Compile Include="Controllers\DichVusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangsController.cs" />
     <Compile Include="Controllers\LoaiDichVusController.cs" />
     <Compile Include="Controllers\LoaiPhongsController.cs" />
     <Compile Include="Controllers\NhaCungCapsController.cs" />
     <Compile Include="Controllers\PhongHatsController.cs" />
+    <Compile Include="Controllers\TaiKhoansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -327,13 +327,6 @@
     <Content Include="Content\assets\plugins\summernote\dist\font\summernote.ttf" />
     <Content Include="Content\assets\plugins\summernote\dist\font\summernote.woff" />
     <Content Include="Content\assets\plugins\summernote\dist\font\summernote.woff2" />
-    <Content Include="Areas\QuanLy\Views\web.config" />
-    <Content Include="Areas\QuanLy\Views\TaiKhoans\Create.cshtml" />
-    <Content Include="Areas\QuanLy\Views\TaiKhoans\Delete.cshtml" />
-    <Content Include="Areas\QuanLy\Views\TaiKhoans\Details.cshtml" />
-    <Content Include="Areas\QuanLy\Views\TaiKhoans\Edit.cshtml" />
-    <Content Include="Areas\QuanLy\Views\TaiKhoans\Index.cshtml" />
-    <Content Include="Areas\QuanLy\Views\TaiKhoans\Login.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -385,12 +378,20 @@
     <Content Include="Views\PhongHats\Details.cshtml" />
     <Content Include="Views\PhongHats\Edit.cshtml" />
     <Content Include="Views\PhongHats\Index.cshtml" />
+    <Content Include="Views\KhachHangs\Create.cshtml" />
+    <Content Include="Views\KhachHangs\Delete.cshtml" />
+    <Content Include="Views\KhachHangs\Details.cshtml" />
+    <Content Include="Views\KhachHangs\Edit.cshtml" />
+    <Content Include="Views\KhachHangs\Index.cshtml" />
+    <Content Include="Views\TaiKhoans\Create.cshtml" />
+    <Content Include="Views\TaiKhoans\Delete.cshtml" />
+    <Content Include="Views\TaiKhoans\Details.cshtml" />
+    <Content Include="Views\TaiKhoans\Edit.cshtml" />
+    <Content Include="Views\TaiKhoans\Index.cshtml" />
+    <Content Include="Views\TaiKhoans\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\QuanLy\Data\" />
-    <Folder Include="Areas\QuanLy\Model\" />
-    <Folder Include="Areas\QuanLy\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

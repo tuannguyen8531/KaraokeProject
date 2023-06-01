@@ -22,6 +22,7 @@ namespace KaraokeProject.Controllers
             return loai + DV.Substring(maDV.ToString().Length - 1);
         }
 
+
         // GET: DichVus
         public ActionResult Index()
         {

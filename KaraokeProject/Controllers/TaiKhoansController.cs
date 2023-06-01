@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using KaraokeProject.Models;
 
-namespace KaraokeProject.Areas.QuanLy.Controllers
+namespace KaraokeProject.Controllers
 {
     public class TaiKhoansController : Controller
     {
@@ -18,7 +18,7 @@ namespace KaraokeProject.Areas.QuanLy.Controllers
         public bool checkUser(string username, string password)
         {
             var result = db.TaiKhoans.Where(x => x.TenDangNhap == username && x.MatKhau == password).ToList();
-            if(result.Count() > 0)
+            if (result.Count() > 0)
             {
                 Session["NguoiDung"] = result.First().TenNguoiDung;
                 Session["PhanQuyen"] = result.First().PhanQuyen1.TenPhanQuyen;
@@ -40,13 +40,13 @@ namespace KaraokeProject.Areas.QuanLy.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(checkUser(tk.TenDangNhap, tk.MatKhau))
+                if (checkUser(tk.TenDangNhap, tk.MatKhau))
                 {
                     var result = db.TaiKhoans.Where(x => x.TenDangNhap == tk.TenDangNhap).ToList();
                     var temp = result.First().PhanQuyen;
-                    FormsAuthentication.SetAuthCookie(tk.TenDangNhap, true);   
-                    if(temp == "QL") return RedirectToAction("Index", "../DichVus");
-                    return RedirectToAction("Index", "../LoaiDichVus");
+                    FormsAuthentication.SetAuthCookie(tk.TenDangNhap, true);
+                    if (temp == "QL") return RedirectToAction("Index", "DichVus");
+                    return RedirectToAction("Index", "LoaiDichVus");
 
                 }
                 else ModelState.AddModelError("", "Tên đăng nhập hoặc tài khoản không đúng.");
@@ -60,14 +60,14 @@ namespace KaraokeProject.Areas.QuanLy.Controllers
             return RedirectToAction("Login", "TaiKhoans");
         }
 
-        // GET: QuanLy/TaiKhoans
+        // GET: TaiKhoans
         public ActionResult Index()
         {
             var taiKhoans = db.TaiKhoans.Include(t => t.PhanQuyen1);
             return View(taiKhoans.ToList());
         }
 
-        // GET: QuanLy/TaiKhoans/Details/5
+        // GET: TaiKhoans/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -82,14 +82,14 @@ namespace KaraokeProject.Areas.QuanLy.Controllers
             return View(taiKhoan);
         }
 
-        // GET: QuanLy/TaiKhoans/Create
+        // GET: TaiKhoans/Create
         public ActionResult Create()
         {
             ViewBag.PhanQuyen = new SelectList(db.PhanQuyens, "MaPhanQuyen", "TenPhanQuyen");
             return View();
         }
 
-        // POST: QuanLy/TaiKhoans/Create
+        // POST: TaiKhoans/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -107,7 +107,7 @@ namespace KaraokeProject.Areas.QuanLy.Controllers
             return View(taiKhoan);
         }
 
-        // GET: QuanLy/TaiKhoans/Edit/5
+        // GET: TaiKhoans/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -123,7 +123,7 @@ namespace KaraokeProject.Areas.QuanLy.Controllers
             return View(taiKhoan);
         }
 
-        // POST: QuanLy/TaiKhoans/Edit/5
+        // POST: TaiKhoans/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -140,7 +140,7 @@ namespace KaraokeProject.Areas.QuanLy.Controllers
             return View(taiKhoan);
         }
 
-        // GET: QuanLy/TaiKhoans/Delete/5
+        // GET: TaiKhoans/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -155,7 +155,7 @@ namespace KaraokeProject.Areas.QuanLy.Controllers
             return View(taiKhoan);
         }
 
-        // POST: QuanLy/TaiKhoans/Delete/5
+        // POST: TaiKhoans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
