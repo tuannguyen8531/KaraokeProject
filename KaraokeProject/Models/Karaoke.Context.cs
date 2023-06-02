@@ -12,6 +12,8 @@ namespace KaraokeProject.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QLKaraokeEntities : DbContext
     {
@@ -42,5 +44,22 @@ namespace KaraokeProject.Models
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ThamSo> ThamSoes { get; set; }
         public virtual DbSet<TrangThai> TrangThais { get; set; }
+    
+        public virtual ObjectResult<ThongKeTonKho_Result> ThongKeTonKho(Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayKetThuc, string loaiDichVu)
+        {
+            var ngayBatDauParameter = ngayBatDau.HasValue ?
+                new ObjectParameter("NgayBatDau", ngayBatDau) :
+                new ObjectParameter("NgayBatDau", typeof(System.DateTime));
+    
+            var ngayKetThucParameter = ngayKetThuc.HasValue ?
+                new ObjectParameter("NgayKetThuc", ngayKetThuc) :
+                new ObjectParameter("NgayKetThuc", typeof(System.DateTime));
+    
+            var loaiDichVuParameter = loaiDichVu != null ?
+                new ObjectParameter("LoaiDichVu", loaiDichVu) :
+                new ObjectParameter("LoaiDichVu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ThongKeTonKho_Result>("ThongKeTonKho", ngayBatDauParameter, ngayKetThucParameter, loaiDichVuParameter);
+        }
     }
 }

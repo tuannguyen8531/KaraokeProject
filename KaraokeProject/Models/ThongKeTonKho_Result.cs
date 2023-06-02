@@ -10,21 +10,15 @@
 namespace KaraokeProject.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ChiTietHoaDon
+    public partial class ThongKeTonKho_Result
     {
-        public string MaHoaDon { get; set; }
         public string MaDichVu { get; set; }
-        public Nullable<int> DonGiaBan { get; set; }
-        public Nullable<int> SoLuongBan { get; set; }
-    
-        public virtual DichVu DichVu { get; set; }
-        public virtual HoaDon HoaDon { get; set; }
-
-        public int ThanhTien
-        {
-            get { return (int)(DonGiaBan * SoLuongBan); }
-        }
+        public string TenDichVu { get; set; }
+        public int SoLuongTonDau { get; set; }
+        public int SoLuongMua { get; set; }
+        public int SoLuongBan { get; set; }
+        public Nullable<int> SoLuongTonCuoi { get; set; }
+        public string TenNhaCungCap { get; set; }
     }
 }

@@ -5,61 +5,20 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>NhanVien</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenNhanVien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenNhanVien)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgaySinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GioiTinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GioiTinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Luong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Luong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TaiKhoan.TenNguoiDung)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TaiKhoan.TenNguoiDung)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col w3-center">
+                <h3 class="page-title mt-5">Xóa Nhân viên "@ViewBag.ID"?</h3>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="w3-center">
+            <input type="submit" value="Xóa" class="btn btn-danger w3-margin-right" />
+            <input type="button" value="Hủy" class="btn btn-secondary" onclick="window.location.href = '@Url.Action("Index", "NhanViens")'" />
         </div>
     }
 </div>

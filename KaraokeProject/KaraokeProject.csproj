@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\DatPhongsController.cs" />
     <Compile Include="Controllers\DichVusController.cs" />
     <Compile Include="Controllers\HoaDonsController.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Controllers\NhanViensController.cs" />
     <Compile Include="Controllers\PhongHatsController.cs" />
     <Compile Include="Controllers\TaiKhoansController.cs" />
+    <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -154,12 +156,14 @@
     <Compile Include="Models\DichVu.cs">
       <DependentUpon>Karaoke.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DichVuThongKe.cs" />
     <Compile Include="Models\DonViTinh.cs">
       <DependentUpon>Karaoke.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon.cs">
       <DependentUpon>Karaoke.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HoaDonViewModel.cs" />
     <Compile Include="Models\Karaoke.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -203,6 +207,9 @@
       <DependentUpon>Karaoke.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThamSo.cs">
+      <DependentUpon>Karaoke.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongKeTonKho_Result.cs">
       <DependentUpon>Karaoke.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TrangThai.cs">
@@ -407,6 +414,10 @@
     <Content Include="Views\HoaDons\Details.cshtml" />
     <Content Include="Views\HoaDons\Edit.cshtml" />
     <Content Include="Views\HoaDons\Index.cshtml" />
+    <Content Include="Views\Bill\CreateBill.cshtml" />
+    <Content Include="Views\Bill\ThongKeTonKho.cshtml" />
+    <Content Include="Views\Bill\ThongKeDoanhThu.cshtml" />
+    <Content Include="Views\TrangChu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

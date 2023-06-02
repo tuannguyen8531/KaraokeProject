@@ -1,0 +1,213 @@
+﻿@model KaraokeProject.Models.HoaDonViewModel
+@{
+    ViewBag.Title = "CreateBill";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title mt-5">Lập hóa đơn</h3>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("CreateBill", "Bill", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row formtype">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>Mã hóa đơn</label>
+                            <input type="text" readonly disabled class="form-control" value="@ViewBag.ID" />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NgayLapHD, "Ngày lập")
+                            <input type="datetime" readonly disabled class="form-control" value="@ViewBag.CurrentDay" />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaNhanVien, "Nhân viên")
+                            @Html.DropDownList("MaNhanVien", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MaNhanVien, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaDatPhong, "Phòng")
+                            <input type="text" readonly class="form-control" value="@ViewBag.MaDatPhong" />
+                            @Html.ValidationMessageFor(model => model.MaDatPhong, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.GioRa, "Giờ ra")
+                            <input type="time" readonly disabled class="form-control" value="@ViewBag.CurrentTime" />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>Tiền giờ hát</label>
+                            <input type="number" readonly disabled class="form-control" value="@ViewBag.Hours" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <table class="w3-table-all" id="myTable">
+                <thead>
+                    <tr>
+                        <th>Mã dịch vụ</th>
+                        <th>Tên dịch vụ</th>
+                        <th>Đơn vị</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.ChiTietHoaDon.Any())
+                    {
+                        for (int i = 0; i < Model.ChiTietHoaDon.Count; i++)
+                        {
+                            <tr id="@i">
+                                <td>
+                                    @if (Model.ChiTietHoaDon[i].MaDichVu != "")
+                                    {
+                                        @Html.DropDownListFor(model => model.ChiTietHoaDon[i].MaDichVu, ViewBag.DichVu as SelectList, Model.ChiTietHoaDon[i].MaDichVu, new { @class = "form-control MaDichVu", id = "MaDichVu_" + i })
+                                    }
+                                    else
+                                    {
+                                        @Html.DropDownListFor(model => model.ChiTietHoaDon[i].MaDichVu, ViewBag.DichVu as SelectList, "Chọn dịch vụ", new { @class = "form-control MaDichVu", id = "MaDichVu_" + i })
+                                    }
+                                </td>
+                                <td style="width: 15%; padding-top: 17px">
+                                    <p id="TenDichVu_@i">
+                                   
+                                    </p>
+                                </td>
+                                <td style="width: 10%; padding-top: 17px">
+                                    <p id="DonVi_@i"></p>
+                                </td>
+                                <td>
+                                    @*@Html.TextBoxFor(model => model.ChiTietHoaDon[i].SoLuong, new { @class = "form-control", style = "width: 70%", id = "SoLuong_" + i })*@
+                                    @if (Model.ChiTietHoaDon[i].MaDichVu != "")
+                                    {
+                                        @Html.TextBoxFor(model => model.ChiTietHoaDon[i].SoLuong, Model.ChiTietHoaDon[i].SoLuong.ToString(), new { @class = "form-control", style = "width: 70%", id = "SoLuong_" + i })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.ChiTietHoaDon[i].SoLuong, new { @class = "form-control", style = "width: 70%", id = "SoLuong_" + i })
+                                    }
+                                </td>
+                                <td>
+                                    
+                                    @if (Model.ChiTietHoaDon[i].MaDichVu != "")
+                                    {
+                                        @Html.TextBoxFor(model => model.ChiTietHoaDon[i].DonGia, Model.ChiTietHoaDon[i].DonGia.ToString(), new { @class = "form-control DonGia", style = "width: 70%", id = "DonGia_" + i })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.ChiTietHoaDon[i].DonGia, new { @class = "form-control DonGia", style = "width: 70%", id = "DonGia_" + i })
+                                    }
+                                </td>
+                                <td class="w3-center">
+                                    <input type="button" class="w3-button w3-red" value="Xóa" onclick="window.location.href = '@Url.Action("RemoveCTHD", "Bill", new { index = i })'" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td>
+                        </td>
+                        <td style="width: 15%; padding-top: 17px">
+                        </td>
+                        <td style="width: 10%; padding-top: 17px">
+                        </td>
+                        <td>
+                            <input type="text" disabled readonly class="form-control" style="width: 70%" />
+                        </td>
+                        <td>
+                            <input type="text" disabled readonly class="form-control" style="width: 70%" />
+                        </td>
+                        <td class="w3-center">
+                            <input type="button" class="w3-button w3-blue" value="Thêm" onclick="window.location.href = '@Url.Action("AddNewCTHD", "Bill")'" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="w3-left" style="padding: 30px">
+            <h4 class="w3-text-red">TỔNG TIỀN: @ViewBag.ToTal VND</h4>
+        </div>
+        <div class="w3-right" style="padding: 30px">
+            <input type="submit" value="Thanh toán" class="btn btn-primary w3-margin-right" />
+            <input type="button" value="Hủy" class="btn btn-danger" onclick="window.location.href = '@Url.Action("Index", "DatPhongs")'" />
+        </div>
+    }
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        // Xử lý sự kiện khi trường MaDichVu thay đổi
+        $('.MaDichVu').change(function () {
+            // Lấy mã dịch vụ được chọn
+            var maDichVu = $(this).val();
+            var index = $(this).attr('id').match(/\d+/)[0];
+
+            var selectedDichVu = $(this).val();
+            var selectedSoLuong = $('#SoLuong_' + index).val();
+            var selectedDonGia = $('#DonGia_' + index).val();
+
+            var tenDichVu;
+
+            // Gửi yêu cầu AJAX để lấy thông tin dịch vụ từ mã dịch vụ
+            $.ajax({
+                url: '@Url.Action("GetThongTinDichVu", "Bill")', // Thay thế ControllerName bằng tên controller của bạn
+                type: 'GET',
+                data: { maDichVu: maDichVu },
+                success: function (result) {
+                    // Cập nhật thông tin dịch vụ trên giao diện
+                    $('#TenDichVu_' + index).text(result.TenDichVu);
+                    $('#DonVi_'+index).text(result.DonVi);
+                    $('#DonGia_' + index).val(result.DonGia);
+                    tenDichVu = result.TenDichVu;
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi lấy thông tin dịch vụ.');
+                }
+            });
+
+            $.ajax({
+                url: '@Url.Action("AddCTHDIntoList", "Bill")',
+                type: 'POST',
+                data: {
+                    selectedDichVu: selectedDichVu,
+                    selectedSoLuong: selectedSoLuong,
+                    selectedDonGia: selectedDonGia,
+                    index: index
+                },
+                success: function (result) {
+                    $('#TenDichVu_' + index).text(tenDichVu);
+                    $('#DonVi_' + index).text(result.DonVi);
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi lưu thông tin dịch vụ.');
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+

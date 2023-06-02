@@ -48,7 +48,8 @@ namespace KaraokeProject.Controllers
         public ActionResult Create()
         {
             ViewBag.ID = getMa("NV");
-            ViewBag.MaTaiKhoan = new SelectList(db.TaiKhoans, "MaTaiKhoan", "TenNguoiDung");
+            var taiKhoans = db.TaiKhoans.Where(tk => tk.MaTaiKhoan == "TK02" || tk.MaTaiKhoan == "TK03" || tk.MaTaiKhoan == "TK04").ToList();
+            ViewBag.MaTaiKhoan = new SelectList(taiKhoans, "MaTaiKhoan", "TenNguoiDung");
             return View();
         }
 
@@ -81,6 +82,8 @@ namespace KaraokeProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             NhanVien nhanVien = db.NhanViens.Find(id);
+            ViewBag.ID = nhanVien.MaNhanVien;
+            Session["MaTKNV"] = nhanVien.MaTaiKhoan;
             if (nhanVien == null)
             {
                 return HttpNotFound();
@@ -96,8 +99,11 @@ namespace KaraokeProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaNhanVien,TenNhanVien,NgaySinh,GioiTinh,Luong,MaTaiKhoan")] NhanVien nhanVien)
         {
+            string id = (string)Session["MaTKNV"];
             if (ModelState.IsValid)
             {
+                nhanVien.MaTaiKhoan = id;
+                Session.Remove("MaTKNV");
                 db.Entry(nhanVien).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -114,6 +120,7 @@ namespace KaraokeProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             NhanVien nhanVien = db.NhanViens.Find(id);
+            ViewBag.ID = nhanVien.TenNhanVien;
             if (nhanVien == null)
             {
                 return HttpNotFound();

@@ -407,6 +407,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ThongKeTonKho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NgayBatDau" Type="datetime" Mode="In" />
+          <Parameter Name="NgayKetThuc" Type="datetime" Mode="In" />
+          <Parameter Name="LoaiDichVu" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="QLKaraokeModelStoreContainer">
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietPhieuNhap" EntityType="Self.ChiTietPhieuNhap" Schema="dbo" store:Type="Tables" />
@@ -1030,7 +1035,21 @@
             <End Role="TrangThai" EntitySet="TrangThais" />
             <End Role="PhongHat" EntitySet="PhongHats" />
           </AssociationSet>
+          <FunctionImport Name="ThongKeTonKho" ReturnType="Collection(QLKaraokeModel.ThongKeTonKho_Result)">
+            <Parameter Name="NgayBatDau" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayKetThuc" Mode="In" Type="DateTime" />
+            <Parameter Name="LoaiDichVu" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="ThongKeTonKho_Result">
+          <Property Type="String" Name="MaDichVu" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="TenDichVu" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="SoLuongTonDau" Nullable="false" />
+          <Property Type="Int32" Name="SoLuongMua" Nullable="false" />
+          <Property Type="Int32" Name="SoLuongBan" Nullable="false" />
+          <Property Type="Int32" Name="SoLuongTonCuoi" Nullable="true" />
+          <Property Type="String" Name="TenNhaCungCap" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1210,6 +1229,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ThongKeTonKho" FunctionName="QLKaraokeModel.Store.ThongKeTonKho">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKaraokeModel.ThongKeTonKho_Result">
+                <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
+                <ScalarProperty Name="TenDichVu" ColumnName="TenDichVu" />
+                <ScalarProperty Name="SoLuongTonDau" ColumnName="SoLuongTonDau" />
+                <ScalarProperty Name="SoLuongMua" ColumnName="SoLuongMua" />
+                <ScalarProperty Name="SoLuongBan" ColumnName="SoLuongBan" />
+                <ScalarProperty Name="SoLuongTonCuoi" ColumnName="SoLuongTonCuoi" />
+                <ScalarProperty Name="TenNhaCungCap" ColumnName="TenNhaCungCap" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

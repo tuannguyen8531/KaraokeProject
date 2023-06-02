@@ -45,8 +45,8 @@ namespace KaraokeProject.Controllers
                     var result = db.TaiKhoans.Where(x => x.TenDangNhap == tk.TenDangNhap).ToList();
                     var temp = result.First().PhanQuyen;
                     FormsAuthentication.SetAuthCookie(tk.TenDangNhap, true);
-                    if (temp == "QL") return RedirectToAction("Index", "DichVus");
-                    return RedirectToAction("Index", "LoaiDichVus");
+                    /*if (temp == "QL") return RedirectToAction("Index", "DichVus");*/
+                    return RedirectToAction("Index", "TrangChu");
 
                 }
                 else ModelState.AddModelError("", "Tên đăng nhập hoặc tài khoản không đúng.");

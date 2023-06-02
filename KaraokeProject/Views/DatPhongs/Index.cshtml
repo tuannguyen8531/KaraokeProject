@@ -38,7 +38,7 @@
                                         </ul>
                                         @if (item.TrangThai == "HD")
                                         {
-                                            <a href="@Url.Action("Create","HoaDons", new { id = item.MaDatPhong })" class="btn btn-block btn-primary text-uppercase">Thanh Toán</a>
+                                            <a href="@Url.Action("CreateBill","Bill", new { id = item.MaDatPhong })" class="btn btn-block btn-primary text-uppercase">Thanh Toán</a>
                                         }
                                         else
                                         {
@@ -51,7 +51,7 @@
                         <div class="col-lg-3">
                             <div class="card mb-5 mb-lg-3">
                                 <div class="card-body">
-                                    <a href="@Url.Action("Create","DatPhongs")" class="btn btn-block btn-primary text-uppercase">add</a>
+                                    <a href="@Url.Action("Create","DatPhongs")" class="btn btn-block btn-primary text-uppercase">tạo</a>
                                 </div>
                             </div>
                         </div>

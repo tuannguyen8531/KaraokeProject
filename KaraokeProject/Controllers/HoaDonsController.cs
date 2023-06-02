@@ -22,37 +22,6 @@ namespace KaraokeProject.Controllers
             return loai + type.Substring(ma.ToString().Length - 1);
         }
 
-        public int LayGiaPhong(string maDatPhong)
-        {
-            // Lấy đối tượng DatPhong từ mã đặt phòng
-            var datPhong = db.DatPhongs.FirstOrDefault(t => t.MaDatPhong == maDatPhong);
-
-            if (datPhong != null)
-            {
-                // Lấy đối tượng PhongHat từ mã phòng hát trong DatPhong
-                var phongHat = db.PhongHats.FirstOrDefault(t => t.MaPhongHat == datPhong.MaPhongHat);
-
-                if (phongHat != null)
-                {
-                    // Lấy mã loại phòng từ đối tượng PhongHat
-                    var maLoaiPhong = phongHat.LoaiPhong;
-
-                    // Lấy đối tượng LoaiPhong từ mã loại phòng
-                    var loaiPhong = db.LoaiPhongs.FirstOrDefault(t => t.MaLoaiPhong == maLoaiPhong);
-
-                    if (loaiPhong != null)
-                    {
-                        // Trả về giá phòng từ đối tượng LoaiPhong
-                        return loaiPhong.GiaPhong;
-                    }
-                }
-            }
-
-            // Trả về giá trị mặc định hoặc xử lý khi không tìm thấy giá phòng
-            return 0;
-        }
-
-
         // GET: HoaDons
         public ActionResult Index()
         {
@@ -72,7 +41,15 @@ namespace KaraokeProject.Controllers
             {
                 return HttpNotFound();
             }
-            return View(hoaDon);
+            ViewBag.MaHoaDon = hoaDon.MaHoaDon;
+            ViewBag.Phong = hoaDon.DatPhong.PhongHat.TenPhongHat;
+            ViewBag.KhachHang = hoaDon.DatPhong.KhachHang.TenKhachHang;
+            ViewBag.NhanVien = hoaDon.NhanVien.TenNhanVien;
+            ViewBag.TongTien = hoaDon.TongTien;
+            ViewBag.GioVao = hoaDon.DatPhong.GioVao;
+            ViewBag.GioRa = hoaDon.GioRa;
+            var cthds = db.ChiTietHoaDons.Where(t => t.MaHoaDon == hoaDon.MaHoaDon);
+            return View(cthds.ToList());
         }
 
         // GET: HoaDons/Create

@@ -3,56 +3,81 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int index = 0;
 }
 
-<h2>Index</h2>
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="mt-5">
+                    <h4 class="card-title float-left mt-2">Danh sách Hóa đơn</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body booking_card">
+                    <div class="table-responsive">
+                        <table class="datatable table table-stripped table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Ngày lập</th>
+                                    <th>Nhân viên lập</th>
+                                    <th>Khách hàng</th>
+                                    <th>Phòng</th>
+                                    <th>Tổng tiền</th>
+                                    <th class="text-right">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @{
+                                                index++;
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayLapHD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GioRa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DatPhong.MaDatPhong)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NhanVien.TenNhanVien)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayLapHD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TongTien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GioRa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatPhong.MaDatPhong)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NhanVien.TenNhanVien)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaHoaDon }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaHoaDon }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaHoaDon })
-        </td>
-    </tr>
-}
-
-</table>
+                                            }
+                                            @index
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NgayLapHD)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NhanVien.TenNhanVien)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DatPhong.KhachHang.TenKhachHang)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DatPhong.PhongHat.TenPhongHat)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TongTien) VND
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v ellipse_color"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="@Url.Action("Details","HoaDons", new { id = item.MaHoaDon })">
+                                                        <i class="fas fa-pencil-alt m-r-5"></i> Xem chi tiết
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

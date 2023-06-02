@@ -1,59 +1,123 @@
-﻿@model KaraokeProject.Models.HoaDon
+﻿@model IEnumerable<KaraokeProject.Models.ChiTietHoaDon>
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int index = 0;
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>HoaDon</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayLapHD)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayLapHD)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TongTien)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GioRa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GioRa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DatPhong.MaKhachHang)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DatPhong.MaKhachHang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NhanVien.TenNhanVien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NhanVien.TenNhanVien)
-        </dd>
-
-    </dl>
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="mt-5">
+                    <h4 class="card-title float-left mt-2">Chi tiết hóa đơn</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row formtype">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Mã Hóa đơn</label>
+                        <input type="text" readonly disabled class="form-control" value="@ViewBag.MaHoaDon" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Nhân viên lập</label>
+                        <input type="text" readonly disabled class="form-control" value="@ViewBag.NhanVien" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Khách hàng</label>
+                        <input type="text" readonly disabled class="form-control" value="@ViewBag.KhachHang" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Giờ vào</label>
+                        <input type="text" readonly disabled class="form-control" value="@ViewBag.GioVao.ToString(@"hh\:mm\:ss")" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Giờ ra</label>
+                        <input type="text" readonly disabled class="form-control" value="@ViewBag.GioRa.ToString(@"hh\:mm\:ss")" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Phòng</label>
+                        <input type="text" readonly disabled class="form-control" value="@ViewBag.Phong" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Tổng tiền</label>
+                        <input type="text" readonly disabled class="form-control" value="@ViewBag.TongTien VND" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body booking_card">
+                    <div class="table-responsive">
+                        <table class="datatable table table-stripped table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên dịch vụ</th>
+                                    <th>Loại dịch vụ</th>
+                                    <th>Đơn vị</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @{
+                                                index++;
+                                            }
+                                            @index
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DichVu.TenDichVu)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DichVu.LoaiDichVu1.TenLoaiDV)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DichVu.DonViTinh1.TenDonVi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DonGiaBan)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SoLuongBan)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ThanhTien)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHoaDon }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
