@@ -112,7 +112,6 @@ CREATE TABLE DatPhong
 (
 	MaDatPhong NVARCHAR(9) NOT NULL PRIMARY KEY,
 	GioVao TIME NOT NULL,
-	GioRa TIME NOT NULL,
 	NgayDat DATE,
 	MaKhachHang NVARCHAR(9) FOREIGN KEY REFERENCES KhachHang(MaKhachHang),
 	MaPhongHat NVARCHAR(9) FOREIGN KEY REFERENCES PhongHat(MaPhongHat),
@@ -141,6 +140,7 @@ CREATE TABLE HoaDon
 	MaNhanVien NVARCHAR(9) FOREIGN KEY REFERENCES NhanVien(MaNhanVien),
 	MaDatPhong NVARCHAR(9) FOREIGN KEY REFERENCES DatPhong(MaDatPhong),
 	TongTien INT,
+	GioRa TIME NOT NULL
 )
 GO
 CREATE TABLE PhieuNhap
@@ -290,15 +290,15 @@ VALUES
     (N'KH05', N'Khách hàng 4', N'Địa chỉ 4', N'0123456789', N'TK08'),
     (N'KH06', N'Khách hàng 5', N'Địa chỉ 5', N'0123456789', N'TK09');
 GO
-INSERT INTO DatPhong (MaDatPhong, GioVao, GioRa, NgayDat, MaKhachHang, MaPhongHat, TrangThai)
+INSERT INTO DatPhong (MaDatPhong, GioVao, NgayDat, MaKhachHang, MaPhongHat, TrangThai)
 VALUES
-	(N'DP01', '12:00:00', '15:00:00', '2022-06-25', N'KH01', N'PH01', N'HT'),
-	(N'DP02', '14:30:00', '17:30:00', '2022-07-30', N'KH02', N'PH02', N'HT'),
-	(N'DP03', '13:15:00', '16:45:00', '2022-10-10', N'KH03', N'PH01', N'HT'),
-	(N'DP04', '10:00:00', '13:30:00', '2023-02-15', N'KH04', N'PH03', N'HT'),
-	(N'DP05', '19:45:00', '22:15:00', '2023-03-20', N'KH05', N'PH02', N'HT'),
-	(N'DP06', '16:30:00', '19:00:00', '2023-04-25', N'KH01', N'PH01', N'HT'),
-	(N'DP07', '18:00:00', '20:30:00', '2023-05-30', N'KH03', N'PH03', N'HT');
+	(N'DP01', '12:00:00', '2022-06-25', N'KH01', N'PH01', N'HT'),
+	(N'DP02', '14:30:00', '2022-07-30', N'KH02', N'PH02', N'HT'),
+	(N'DP03', '13:15:00', '2022-10-10', N'KH03', N'PH01', N'HT'),
+	(N'DP04', '10:00:00', '2023-02-15', N'KH04', N'PH03', N'HT'),
+	(N'DP05', '19:45:00', '2023-03-20', N'KH05', N'PH02', N'HT'),
+	(N'DP06', '16:30:00', '2023-04-25', N'KH01', N'PH01', N'HT'),
+	(N'DP07', '18:00:00', '2023-05-30', N'KH03', N'PH03', N'HT');
 GO
 INSERT INTO NhanVien (MaNhanVien, TenNhanVien, NgaySinh, GioiTinh, Luong, MaTaiKhoan)
 VALUES
@@ -306,15 +306,15 @@ VALUES
     (N'NV02', N'Lê Văn Pháp', DATEFROMPARTS(1998, 6, 20), 1, 12000000, N'TK03'),
     (N'NV03', N'Phan Anh Dũng', DATEFROMPARTS(2000, 9, 10), 1, 11000000, N'TK04');
 GO
-INSERT INTO HoaDon (MaHoaDon, NgayLapHD, MaNhanVien, MaDatPhong, TongTien)
+INSERT INTO HoaDon (MaHoaDon, NgayLapHD, MaNhanVien, MaDatPhong, TongTien, GioRa)
 VALUES
-    (N'HD01', '2022-06-25', N'NV01', N'DP01', 1500000),
-    (N'HD02', '2022-07-30', N'NV01', N'DP02', 1200000),
-    (N'HD03', '2022-10-10', N'NV02', N'DP03', 900000),
-    (N'HD04', '2023-02-15', N'NV02', N'DP04', 2000000),
-    (N'HD05', '2023-03-20', N'NV03', N'DP05', 800000),
-    (N'HD06', '2023-04-25', N'NV03', N'DP06', 1700000),
-    (N'HD07', '2023-05-30', N'NV01', N'DP07', 500000);
+    (N'HD01', '2022-06-25', N'NV01', N'DP01', 1500000, '15:00:00'),
+    (N'HD02', '2022-07-30', N'NV01', N'DP02', 1200000, '17:30:00'),
+    (N'HD03', '2022-10-10', N'NV02', N'DP03', 900000, '16:45:00'),
+    (N'HD04', '2023-02-15', N'NV02', N'DP04', 2000000, '13:30:00'),
+    (N'HD05', '2023-03-20', N'NV03', N'DP05', 800000, '22:15:00'),
+    (N'HD06', '2023-04-25', N'NV03', N'DP06', 1700000, '19:00:00'),
+    (N'HD07', '2023-05-30', N'NV01', N'DP07', 500000, '20:30:00');
 GO
 INSERT INTO ChiTietHoaDon (MaHoaDon, MaDichVu, DonGiaBan, SoLuongBan)
 VALUES
@@ -366,4 +366,17 @@ VALUES
     (N'PN05', N'SP08', 190000, 100);
 
 GO
--- Các thủ tục -- 
+-- Chỉnh sửa -- 
+ALTER TABLE HoaDon
+ADD GioRa DATETIME;
+
+UPDATE HoaDon
+SET GioRa = DatPhong.GioRa
+FROM HoaDon
+INNER JOIN DatPhong ON HoaDon.MaDatPhong = DatPhong.MaDatPhong;
+
+ALTER TABLE DatPhong
+DROP COLUMN GioRa;
+
+GO
+CREATE OR ALTER PROC 
