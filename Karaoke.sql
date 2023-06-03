@@ -248,7 +248,18 @@ VALUES
     (N'SP17', N'Rượu Soju', N'BA', N'DV02', 165000, 800, N'NC07'),
     (N'SP18', N'Sinh tố lúa mạch', N'NN', N'DV03', 225000, 1400, N'NC08'),
     (N'SP19', N'Dưa hấu', N'TC', N'DV04', 135000, 1000, N'NC09'),
-    (N'SP20', N'Tay vịn', N'OT', N'DV05', 195000, 1600, N'NC10');
+    (N'SP20', N'Tay vịn', N'OT', N'DV05', 195000, 1600, N'NC10'),
+	(N'SP21', N'Trà sữa', N'TA', N'DV01', 80000, 500, N'NC01'),
+    (N'SP22', N'Bia Tiger', N'BA', N'DV02', 140000, 800, N'NC02'),
+    (N'SP23', N'Nước tăng lực', N'NN', N'DV03', 180000, 1200, N'NC03'),
+    (N'SP24', N'Rong biển', N'TC', N'DV04', 90000, 2000, N'NC04'),
+    (N'SP25', N'Cam sành', N'OT', N'DV05', 120000, 700, N'NC05'),
+    (N'SP26', N'Mì xào hải sản', N'TA', N'DV01', 95000, 1500, N'NC06'),
+    (N'SP27', N'Rượu Hennessy', N'BA', N'DV02', 320000, 600, N'NC07'),
+    (N'SP28', N'Soda chanh', N'NN', N'DV03', 75000, 1000, N'NC08'),
+    (N'SP29', N'Bánh tráng trộn', N'TC', N'DV04', 60000, 1800, N'NC09'),
+    (N'SP30', N'Nho xanh', N'OT', N'DV05', 140000, 900, N'NC10');
+GO
 GO
 INSERT INTO PhongHat (MaPhongHat, TenPhongHat, LoaiPhong, TrangThai)
 VALUES
@@ -266,29 +277,23 @@ GO
 INSERT INTO PhanQuyen (MaPhanQuyen, TenPhanQuyen)
 VALUES
     (N'QL', N'Quản lý'),
-    (N'NV', N'Nhân viên'),
-    (N'KH', N'Khách hàng');
+    (N'NV', N'Nhân viên');
 GO
 INSERT INTO TaiKhoan (MaTaiKhoan, TenNguoiDung, TenDangNhap, MatKhau, PhanQuyen)
 VALUES
     (N'TK01', N'Quản Lý', N'quanly', N'123456', N'QL'),
     (N'TK02', N'Thu Ngân', N'thungan', N'98765432', N'NV'),
     (N'TK03', N'Kiểm Kho', N'kiemkho', N'24681357', N'NV'),
-    (N'TK04', N'Bảo Vệ', N'baove', N'13579246', N'NV'),
-    (N'TK05', N'Dương Thiên Vũ', N'khachhang1', N'78901234', N'KH'),
-    (N'TK06', N'Trần Nguyệt Như', N'khachhang2', N'54321678', N'KH'),
-    (N'TK07', N'Lâm Nhật Vy', N'khachhang3', N'98765432', N'KH'),
-    (N'TK08', N'Lý Tố Thường', N'khachhang4', N'24681357', N'KH'),
-    (N'TK09', N'Hạ Tuyết Linh', N'khachhang5', N'13579246', N'KH');
+    (N'TK04', N'Bảo Vệ', N'baove', N'13579246', N'NV');
 GO
 INSERT INTO KhachHang (MaKhachHang, TenKhachHang, DiaChi, SoDienThoai, MaTaiKhoan)
 VALUES
 	(N'KH01', N'Khách lẻ', NULL, NULL, NULL),
-    (N'KH02', N'Khách hàng 1', N'Địa chỉ 1', N'0123456789', N'TK05'),
-    (N'KH03', N'Khách hàng 2', N'Địa chỉ 2', N'0123456789', N'TK06'),
-    (N'KH04', N'Khách hàng 3', N'Địa chỉ 3', N'0123456789', N'TK07'),
-    (N'KH05', N'Khách hàng 4', N'Địa chỉ 4', N'0123456789', N'TK08'),
-    (N'KH06', N'Khách hàng 5', N'Địa chỉ 5', N'0123456789', N'TK09');
+    (N'KH02', N'Khách hàng 1', N'Địa chỉ 1', N'0123456789', NULL),
+    (N'KH03', N'Khách hàng 2', N'Địa chỉ 2', N'0123456789', NULL),
+    (N'KH04', N'Khách hàng 3', N'Địa chỉ 3', N'0123456789', NULL),
+    (N'KH05', N'Khách hàng 4', N'Địa chỉ 4', N'0123456789', NULL),
+    (N'KH06', N'Khách hàng 5', N'Địa chỉ 5', N'0123456789', NULL);
 GO
 INSERT INTO DatPhong (MaDatPhong, GioVao, NgayDat, MaKhachHang, MaPhongHat, TrangThai)
 VALUES
@@ -298,7 +303,15 @@ VALUES
 	(N'DP04', '10:00:00', '2023-02-15', N'KH04', N'PH03', N'HT'),
 	(N'DP05', '19:45:00', '2023-03-20', N'KH05', N'PH02', N'HT'),
 	(N'DP06', '16:30:00', '2023-04-25', N'KH01', N'PH01', N'HT'),
-	(N'DP07', '18:00:00', '2023-05-30', N'KH03', N'PH03', N'HT');
+	(N'DP07', '18:00:00', '2023-05-30', N'KH03', N'PH03', N'HT'),
+    (N'DP08', '11:30:00', '2023-06-10', N'KH02', N'PH02', N'HT'),
+    (N'DP09', '13:45:00', '2023-07-15', N'KH04', N'PH01', N'HT'),
+    (N'DP10', '15:00:00', '2023-08-20', N'KH05', N'PH03', N'HT'),
+    (N'DP11', '17:15:00', '2023-09-25', N'KH01', N'PH02', N'HT'),
+    (N'DP12', '19:30:00', '2023-10-30', N'KH03', N'PH01', N'HT'),
+    (N'DP13', '21:45:00', '2023-11-05', N'KH02', N'PH03', N'HT'),
+    (N'DP14', '13:00:00', '2023-12-10', N'KH06', N'PH01', N'HT'),
+    (N'DP15', '15:15:00', '2023-12-25', N'KH05', N'PH02', N'HT');
 GO
 INSERT INTO NhanVien (MaNhanVien, TenNhanVien, NgaySinh, GioiTinh, Luong, MaTaiKhoan)
 VALUES
@@ -312,9 +325,17 @@ VALUES
     (N'HD02', '2022-07-30', N'NV01', N'DP02', 1200000, '17:30:00'),
     (N'HD03', '2022-10-10', N'NV02', N'DP03', 900000, '16:45:00'),
     (N'HD04', '2023-02-15', N'NV02', N'DP04', 2000000, '13:30:00'),
-    (N'HD05', '2023-03-20', N'NV03', N'DP05', 800000, '22:15:00'),
-    (N'HD06', '2023-04-25', N'NV03', N'DP06', 1700000, '19:00:00'),
-    (N'HD07', '2023-05-30', N'NV01', N'DP07', 500000, '20:30:00');
+    (N'HD05', '2023-03-20', N'NV01', N'DP05', 800000, '22:15:00'),
+    (N'HD06', '2023-04-25', N'NV02', N'DP06', 1700000, '19:00:00'),
+    (N'HD07', '2023-05-30', N'NV01', N'DP07', 500000, '20:30:00'),
+	(N'HD08', '2023-06-10', N'NV01', N'DP08', 1800000, '10:30:00'),
+    (N'HD09', '2023-07-15', N'NV02', N'DP09', 2200000, '11:45:00'),
+    (N'HD10', '2023-08-20', N'NV02', N'DP10', 1500000, '14:00:00'),
+    (N'HD11', '2023-09-25', N'NV02', N'DP11', 1900000, '16:15:00'),
+    (N'HD12', '2023-10-30', N'NV02', N'DP12', 800000, '18:30:00'),
+    (N'HD13', '2023-11-05', N'NV01', N'DP13', 1300000, '20:45:00'),
+    (N'HD14', '2023-12-10', N'NV01', N'DP14', 1000000, '12:00:00'),
+    (N'HD15', '2023-12-25', N'NV02', N'DP15', 1700000, '14:15:00');
 GO
 INSERT INTO ChiTietHoaDon (MaHoaDon, MaDichVu, DonGiaBan, SoLuongBan)
 VALUES
@@ -365,18 +386,114 @@ VALUES
     (N'PN05', N'SP06', 160000, 80),
     (N'PN05', N'SP08', 190000, 100);
 
+-- Các thủ tục -- 
 GO
--- Chỉnh sửa -- 
-ALTER TABLE HoaDon
-ADD GioRa DATETIME;
-
-UPDATE HoaDon
-SET GioRa = DatPhong.GioRa
-FROM HoaDon
-INNER JOIN DatPhong ON HoaDon.MaDatPhong = DatPhong.MaDatPhong;
-
-ALTER TABLE DatPhong
-DROP COLUMN GioRa;
-
+CREATE OR ALTER PROCEDURE ThongKeTonKho
+    @NgayBatDau DATETIME = NULL,
+    @NgayKetThuc DATETIME = NULL,
+	@LoaiDichVu NVARCHAR(9)
+AS
+BEGIN
+    SELECT
+        dv.MaDichVu,
+		dv.TenDichVu,
+        dv.SoLuongTon - ISNULL(SUM(ctpn.SoLuongMua), 0) + ISNULL(SUM(cthd.SoLuongBan), 0) AS SoLuongTonDau,
+        ISNULL(SUM(ctpn.SoLuongMua), 0) AS SoLuongMua,
+        ISNULL(SUM(cthd.SoLuongBan), 0) AS SoLuongBan,
+        dv.SoLuongTon AS SoLuongTonCuoi,
+		ncc.TenNhaCungCap
+    FROM
+        DichVu dv
+        LEFT JOIN ChiTietPhieuNhap ctpn ON dv.MaDichVu = ctpn.MaDichVu
+        LEFT JOIN PhieuNhap pn ON ctpn.MaPhieuNhap = pn.MaPhieuNhap
+        LEFT JOIN ChiTietHoaDon cthd ON dv.MaDichVu = cthd.MaDichVu
+        LEFT JOIN HoaDon hd ON cthd.MaHoaDon = hd.MaHoaDon
+        LEFT JOIN LoaiDichVu lm ON dv.LoaiDichVu = lm.MaLoaiDV
+		JOIN NhaCungCap ncc ON dv.NhaCungCap = ncc.MaNhaCungCap
+    WHERE
+        (pn.NgayLapPN BETWEEN @NgayBatDau AND @NgayKetThuc OR hd.NgayLapHD BETWEEN @NgayBatDau AND @NgayKetThuc OR pn.NgayLapPN IS NULL OR hd.NgayLapHD IS NULL)
+        AND (lm.MaLoaiDV = @LoaiDichVu OR @LoaiDichVu IS NULL)
+    GROUP BY
+        dv.MaDichVu, dv.SoLuongTon, ncc.TenNhaCungCap, dv.TenDichVu
+END
 GO
-CREATE OR ALTER PROC 
+CREATE OR ALTER PROCEDURE TraCuuDichVu
+(
+	@TenDichVu NVARCHAR(100) = NULL,
+	@LoaiDichVu NVARCHAR(9) = NULL,
+	@NhaCungCap NVARCHAR(9) = NULL,
+	@GiaMin VARCHAR(100) = NULL,
+	@GiaMax VARCHAR(100) = NULL,
+	@SoLuongMin VARCHAR(100) = NULL,
+	@SoLuongMax VARCHAR(100) = NULL
+) AS
+BEGIN
+	DECLARE @SqlStr NVARCHAR(4000)
+	SELECT @SqlStr = 'SELECT * FROM DichVu WHERE (1=1) '
+	IF @TenDichVu IS NOT NULL
+		SELECT @SqlStr = @SqlStr + 'AND (TenDichVu LIKE N''%' + @TenDichVu + '%'')'
+	IF @LoaiDichVu IS NOT NULL
+		SELECT @SqlStr = @SqlStr + 'AND (LoaiDichVu LIKE ''%' + @LoaiDichVu + '%'')'
+	IF @NhaCungCap IS NOT NULL
+		SELECT @SqlStr = @SqlStr + 'AND (NhaCungCap LIKE ''%' + @NhaCungCap + '%'')'
+	IF @GiaMin IS NOT NULL 
+		SELECT @SqlStr = @SqlStr + 'AND (DonGia >= Convert(int,''' + @GiaMin + '''))'
+	IF @GiaMax IS NOT NULL 
+		SELECT @SqlStr = @SqlStr + 'AND (DonGia <= Convert(int,''' + @GiaMax + '''))'
+	IF @SoLuongMin IS NOT NULL 
+		SELECT @SqlStr = @SqlStr + 'AND (SoLuongTon >= Convert(int,''' + @SoLuongMin + '''))'
+	IF @SoLuongMax IS NOT NULL 
+		SELECT @SqlStr = @SqlStr + 'AND (SoLuongTon <= Convert(int,''' + @SoLuongMax + '''))'
+	EXEC SP_EXECUTESQL @SqlStr
+END
+GO
+CREATE OR ALTER PROCEDURE TraCuuKhachHang
+(
+	@TenKhachHang NVARCHAR(100) = NULL,
+	@SoDienThoai NVARCHAR(100) = NULL,
+	@DiaChi NVARCHAR(100) = NULL
+) AS
+BEGIN
+	DECLARE @SqlStr NVARCHAR(4000)
+	SELECT @SqlStr = 'SELECT * FROM KhachHang WHERE (1=1) '
+	IF @TenKhachHang IS NOT NULL
+		SELECT @SqlStr = @SqlStr + 'AND (TenKhachHang LIKE N''%' + @TenKhachHang + '%'')'
+	IF @SoDienThoai IS NOT NULL
+		SELECT @SqlStr = @SqlStr + 'AND (SoDienThoai LIKE N''%' + @SoDienThoai + '%'')'
+	IF @DiaChi IS NOT NULL
+		SELECT @SqlStr = @SqlStr + 'AND (DiaChi LIKE N''%' + @DiaChi + '%'')'
+	EXEC SP_EXECUTESQL @SqlStr
+END
+GO
+CREATE OR ALTER PROCEDURE TraCuuNhanVien
+(
+	@TenNhanVien NVARCHAR(100) = NULL,
+	@ChucVu NVARCHAR(9) = NULL,
+	@GioiTinh NVARCHAR(9) = NULL,
+	@TuoiMin VARCHAR(100) = NULL,
+	@TuoiMax VARCHAR(100) = NULL,
+	@LuongMin VARCHAR(100) = NULL,
+	@LuongMax VARCHAR(100) = NULL
+) AS
+BEGIN
+	DECLARE @SqlStr NVARCHAR(4000)
+	SELECT @SqlStr = 'SELECT * FROM NhanVien WHERE (1=1) '
+	IF @TenNhanVien IS NOT NULL
+		SELECT @SqlStr = @SqlStr + 'AND (TenNhanVien LIKE N''%' + @TenNhanVien + '%'')'
+	IF @ChucVu IS NOT NULL
+		SELECT @SqlStr = @SqlStr + 'AND (MaTaiKhoan LIKE ''%' + @ChucVu + '%'')'
+	IF @GioiTinh IS NOT NULL
+		SELECT @SqlStr = @SqlStr + 'AND (GioiTinh LIKE ''%' + @GioiTinh + '%'')'
+	IF @TuoiMin IS NOT NULL 
+		SELECT @SqlStr = @SqlStr + 'AND (DATEDIFF(YEAR, NgaySinh, GETDATE()) >= Convert(int,''' + @TuoiMin + '''))'
+	IF @TuoiMax IS NOT NULL 
+		SELECT @SqlStr = @SqlStr + 'AND (DATEDIFF(YEAR, NgaySinh, GETDATE()) <= Convert(int,''' + @TuoiMax + '''))'
+	IF @LuongMin IS NOT NULL 
+		SELECT @SqlStr = @SqlStr + 'AND (Luong >= Convert(int,''' + @LuongMin + '''))'
+	IF @LuongMax IS NOT NULL 
+		SELECT @SqlStr = @SqlStr + 'AND (Luong <= Convert(int,''' + @LuongMax + '''))'
+	EXEC SP_EXECUTESQL @SqlStr
+END
+EXEC dbo.TraCuuNhanVien N'', N'', N'', 0, 30, 0, 50000000
+
+
