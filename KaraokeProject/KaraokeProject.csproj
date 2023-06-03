@@ -421,6 +421,7 @@
     <Content Include="Views\DichVus\Search.cshtml" />
     <Content Include="Views\KhachHangs\Search.cshtml" />
     <Content Include="Views\NhanViens\Search.cshtml" />
+    <Content Include="Views\TrangChu\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

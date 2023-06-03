@@ -190,10 +190,10 @@
                             }
                             else
                             {
-                                <a class="dropdown-item w3-center" href="profile.html">
+                                <a class="dropdown-item w3-center" href="@Url.Action("Error","TrangChu")">
                                     <i class="fas fa-user" style="margin-right: 10px"></i>Trang cá nhân
                                 </a>
-                                <a class="dropdown-item w3-center" href="settings.html">
+                                <a class="dropdown-item w3-center" href="@Url.Action("Error","TrangChu")">
                                     <i class="fas fa-cog" style="margin-right: 10px"></i>Thiết lập
                                 </a>
                                 <a class="dropdown-item w3-center" href="@Url.Action("Logout","TaiKhoans")">
@@ -230,7 +230,7 @@
                                 <li><a href="@Url.Action("Index","DichVus")"> Dịch vụ </a></li>
                                 <li><a href="@Url.Action("Index","LoaiDichVus")"> Loại dịch vụ </a></li>
                                 <li><a href="@Url.Action("Index","NhaCungCaps")"> Nhà cung cấp </a></li>
-                                <li><a href="add-booking.html"> Nhập kho </a></li>
+                                <li><a href="@Url.Action("Error","TrangChu")"> Nhập kho </a></li>
                                 <li><a href="@Url.Action("Search", "DichVus")"> Tra cứu </a></li>
                             </ul>
                         </li>
@@ -274,7 +274,7 @@
                                 <li><a href="@Url.Action("ThongKeDoanhThu","Bill")">Doanh thu</a></li>
                             </ul>
                         </li>
-                        <li> <a href="settings.html"><i class="fas fa-cog"></i> <span>Cài đặt</span></a> </li>
+                        <li> <a href="@Url.Action("Error","TrangChu")"><i class="fas fa-cog"></i> <span>Cài đặt</span></a> </li>
                         <li class="list-divider"></li>
                     </ul>
                 </div>
