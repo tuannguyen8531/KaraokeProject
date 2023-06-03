@@ -48,6 +48,7 @@ namespace KaraokeProject.Controllers
             ViewBag.TongTien = hoaDon.TongTien;
             ViewBag.GioVao = hoaDon.DatPhong.GioVao;
             ViewBag.GioRa = hoaDon.GioRa;
+            ViewBag.NgayLap = hoaDon.NgayLapHD;
             var cthds = db.ChiTietHoaDons.Where(t => t.MaHoaDon == hoaDon.MaHoaDon);
             return View(cthds.ToList());
         }

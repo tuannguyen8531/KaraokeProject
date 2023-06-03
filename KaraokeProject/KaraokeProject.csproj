@@ -224,36 +224,11 @@
     <Content Include="Content\assets\css\select2.min.css" />
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\fonts\feathericon.svg" />
+    <Content Include="Content\assets\img\dogandcat.png" />
     <Content Include="Content\assets\img\favicon.png" />
     <Content Include="Content\assets\img\hotel_logo.png" />
+    <Content Include="Content\assets\img\karaoke_logo.png" />
     <Content Include="Content\assets\img\logo.png" />
-    <Content Include="Content\assets\img\placeholder.jpg" />
-    <Content Include="Content\assets\img\product\product-01.jpg" />
-    <Content Include="Content\assets\img\product\product-02.jpg" />
-    <Content Include="Content\assets\img\product\product-03.jpg" />
-    <Content Include="Content\assets\img\product\product-04.jpg" />
-    <Content Include="Content\assets\img\product\product-05.jpg" />
-    <Content Include="Content\assets\img\product\product-06.jpg" />
-    <Content Include="Content\assets\img\product\product-07.jpg" />
-    <Content Include="Content\assets\img\product\product-08.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-01.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-02.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-03.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-04.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-05.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-06.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-07.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-08.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-09.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-10.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-11.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-12.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-13.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-15.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-16.jpg" />
-    <Content Include="Content\assets\img\profiles\avatar-17.jpg" />
-    <Content Include="Content\assets\img\sent.png" />
-    <Content Include="Content\assets\img\video-call.jpg" />
     <Content Include="Content\assets\js\bootstrap-datetimepicker.min.js" />
     <Content Include="Content\assets\js\bootstrap.min.js" />
     <Content Include="Content\assets\js\chart.morris.js" />
@@ -422,6 +397,7 @@
     <Content Include="Views\KhachHangs\Search.cshtml" />
     <Content Include="Views\NhanViens\Search.cshtml" />
     <Content Include="Views\TrangChu\Error.cshtml" />
+    <Content Include="Views\TaiKhoans\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Đăng nhập</title>
-    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/karaoke_logo.png">
     <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" type="text/css" href="~/Content/assets/plugins/fontawesome/css/all.min.css">
@@ -24,7 +24,9 @@
         <div class="login-wrapper">
             <div class="container">
                 <div class="loginbox">
-                    <div class="login-left"> <img class="img-fluid" src="~/Content/assets/img/logo.png" alt="Logo"> </div>
+                    <div class="login-left">
+                        <img class="" src="~/Content/assets/img/dogandcat.png" alt="Logo" height="100%" width="100%"> 
+                    </div>
                     <div class="login-right">
                         <div class="login-right-wrap">
                             <h1>Đăng nhập</h1>
@@ -39,17 +41,19 @@
                                         </div>
                                         <div class="form-group">
                                             @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", placeholder = "Mật khẩu", type = "password" } })
+                                            <span class="text-danger">@ViewBag.ThongBao</span>
                                         </div>
+                                      
                                         <div class="form-group">
                                             <input class="btn btn-primary btn-block" type="submit" value="Đăng nhập" />
                                         </div>
                                     </div>
                                 </div>
                              }
-                            <div class="text-center forgotpass"><a href="forgot-password.html">Quên mật khẩu?</a> </div>
+                            <div class="text-center forgotpass"><a href="#">Quên mật khẩu?</a> </div>
                             <div class="login-or"> <span class="or-line"></span> <span class="span-or">or</span> </div>
                             <div class="social-login"> <span>Đăng nhập bằng</span> <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="google"><i class="fab fa-google"></i></a> </div>
-                            <div class="text-center dont-have">Không có tài khoản? <a href="Đăng kí">Đăng kí</a></div>
+                            <div class="text-center dont-have">Không có tài khoản? <a href="#">Đăng kí</a></div>
                         </div>
                     </div>
                 </div>

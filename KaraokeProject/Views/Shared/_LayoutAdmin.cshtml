@@ -7,6 +7,8 @@
     var datphong = " ";
     var kho = " ";
     var khachhang = " ";
+    var tonkho = " ";
+    var doanhthu = " ";
     bool login = false;
     if(!string.IsNullOrEmpty(nguoiDung))
     {
@@ -21,13 +23,15 @@
         if(nguoiDung == "Thu Ngân")
         {
             kho = "disabled";
+            tonkho = "disabled";
         }
         else
         {
             datphong = "disabled";
             khachhang = "disabled";
-        } 
-            
+            doanhthu = "disabled";
+        }
+
     }
 
 }
@@ -48,7 +52,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Karaoke Khánh Dương</title>
-    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/karaoke_logo.png">
     <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="~/Content/assets/plugins/fontawesome/css/all.min.css">
@@ -66,98 +70,18 @@
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
-                <a href="index.html" class="logo"> <span class="logoclass">KHÁNH DƯƠNG</span> </a>
-                <a href="index.html" class="logo logo-small"> <img src="~/Content/assets/img/karaoke_logo.png" alt="Logo" width="30" height="30"> </a>
+                <a href="@Url.Action("Index","TrangChu")" class="logo"> <span class="logoclass">KHÁNH DƯƠNG</span> </a>
+                <a href="@Url.Action("Index","TrangChu")" class="logo logo-small"> <img src="~/Content/assets/img/karaoke_logo.png" alt="Logo" width="30" height="30"> </a>
             </div>
             <a href="javascript:void(0);" id="toggle_btn"> <i class="fe fe-text-align-left"></i> </a>
             <a class="mobile_btn" id="mobile_btn"> <i class="fas fa-bars"></i> </a>
             <ul class="nav user-menu">
-                <li class="nav-item dropdown noti-dropdown">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <i class="fe fe-bell"></i> <span class="badge badge-pill">3</span> </a>
-                    <div class="dropdown-menu notifications">
-                        <div class="topnav-dropdown-header"> <span class="notification-title">Notifications</span> <a href="javascript:void(0)" class="clear-noti"> Clear All </a> </div>
-                        <div class="noti-content">
-                            <ul class="notification-list">
-                                <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
-                                            </span>
-                                            <div class="media-body">
-                                                <p class="noti-details"><span class="noti-title">Carlson Tech</span> has approved <span class="noti-title">your estimate</span></p>
-                                                <p class="noti-time"><span class="notification-time">4 mins ago</span> </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-11.jpg">
-                                            </span>
-                                            <div class="media-body">
-                                                <p class="noti-details">
-                                                    <span class="noti-title">
-                                                        International Software
-                                                        Inc
-                                                    </span> has sent you a invoice in the amount of <span class="noti-title">$218</span>
-                                                </p>
-                                                <p class="noti-time"><span class="notification-time">6 mins ago</span> </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-17.jpg">
-                                            </span>
-                                            <div class="media-body">
-                                                <p class="noti-details">
-                                                    <span class="noti-title">John Hendry</span> sent a cancellation request <span class="noti-title">
-                                                        Apple iPhone
-                                                        XR
-                                                    </span>
-                                                </p>
-                                                <p class="noti-time"><span class="notification-time">8 mins ago</span> </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-13.jpg">
-                                            </span>
-                                            <div class="media-body">
-                                                <p class="noti-details">
-                                                    <span class="noti-title">
-                                                        Mercury Software
-                                                        Inc
-                                                    </span> added a new product <span class="noti-title">
-                                                        Apple
-                                                        MacBook Pro
-                                                    </span>
-                                                </p>
-                                                <p class="noti-time"><span class="notification-time">12 mins ago</span> </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="topnav-dropdown-footer"> <a href="#">Xem tất cả</a> </div>
-                    </div>
-                </li>
+                
                 <li class="nav-item dropdown has-arrow">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <span class="user-img"><img class="rounded-circle" src="~/Content/assets/img/profiles/avatar-01.jpg" width="31" alt=""></span> </a>
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <span class="user-img"><img class="rounded-circle" src="~/Content/assets/img/karaoke_logo.png" width="31" alt=""></span> </a>
                     <div class="dropdown-menu">
                         <div class="user-header">
-                            <div class="avatar avatar-sm"> <img src="~/Content/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle"> </div>
+                            <div class="avatar avatar-sm"> <img src="~/Content/assets/img/karaoke_logo.png" alt="User Image" class="avatar-img rounded-circle"> </div>
                             <div class="user-text">
                                 <p class="text-muted">
                                     @if (!string.IsNullOrEmpty(nguoiDung))
@@ -260,18 +184,15 @@
                         <li class="submenu @show">
                             <a href="#"><i class="fas fa-book"></i> <span> Tài khoản </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="invoices.html">Invoices </a></li>
-                                <li><a href="payments.html">Payments </a></li>
-                                <li><a href="expenses.html">Expenses </a></li>
-                                <li><a href="taxes.html">Taxes </a></li>
-                                <li><a href="provident-fund.html">Provident Fund </a></li>
+                                <li><a href="@Url.Action("Index","TaiKhoans")">Tài khoản </a></li>
+                                <li><a href="@Url.Action("Create","TaiKhoans")">Thêm mới </a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fe fe-table"></i> <span> Thống kê </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="@Url.Action("ThongKeTonKho","Bill")">Tồn kho</a></li>
-                                <li><a href="@Url.Action("ThongKeDoanhThu","Bill")">Doanh thu</a></li>
+                                <li class="@tonkho"><a href="@Url.Action("ThongKeTonKho","Bill")">Tồn kho</a></li>
+                                <li class="@doanhthu"><a href="@Url.Action("ThongKeDoanhThu","Bill")">Doanh thu</a></li>
                             </ul>
                         </li>
                         <li> <a href="@Url.Action("Error","TrangChu")"><i class="fas fa-cog"></i> <span>Cài đặt</span></a> </li>

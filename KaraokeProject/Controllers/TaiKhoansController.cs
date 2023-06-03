@@ -29,6 +29,59 @@ namespace KaraokeProject.Controllers
             return false;
         }
 
+        public ActionResult ChangePassword(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
+            if (taiKhoan == null)
+            {
+                return HttpNotFound();
+            }
+            return View(taiKhoan);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(string id, string oldpass, string newpass)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
+            if (taiKhoan == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (string.IsNullOrEmpty(newpass))
+            {
+                ViewBag.Trong = "Mật khẩu không được để trống";
+                return View(taiKhoan);
+            }
+
+            if (oldpass != taiKhoan.MatKhau)
+            {
+                ViewBag.SaiMatKhau = "Sai mật khẩu";
+                return View(taiKhoan);
+            }
+
+            taiKhoan.MatKhau = newpass;
+            db.Entry(taiKhoan).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        string getMa(string loai)
+        {
+            var maMax = db.TaiKhoans.ToList().Select(n => n.MaTaiKhoan).Max();
+            int ma = int.Parse(maMax.Substring(2)) + 1;
+            string type = String.Concat("0", ma.ToString());
+            return loai + type.Substring(ma.ToString().Length - 1);
+        }
+
         public ActionResult Login()
         {
             return View();
@@ -50,6 +103,7 @@ namespace KaraokeProject.Controllers
 
                 }
                 else ModelState.AddModelError("", "Tên đăng nhập hoặc tài khoản không đúng.");
+                ViewBag.ThongBao = "Tên đăng nhập hoặc tài khoản không đúng.";
             }
             return View(tk);
         }
@@ -85,6 +139,7 @@ namespace KaraokeProject.Controllers
         // GET: TaiKhoans/Create
         public ActionResult Create()
         {
+            ViewBag.ID = getMa("TK");
             ViewBag.PhanQuyen = new SelectList(db.PhanQuyens, "MaPhanQuyen", "TenPhanQuyen");
             return View();
         }
@@ -96,8 +151,11 @@ namespace KaraokeProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaTaiKhoan,TenNguoiDung,TenDangNhap,MatKhau,PhanQuyen")] TaiKhoan taiKhoan)
         {
+            string id = getMa("TK");
             if (ModelState.IsValid)
             {
+                taiKhoan.PhanQuyen = "NV";
+                taiKhoan.MaTaiKhoan = id;
                 db.TaiKhoans.Add(taiKhoan);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -148,6 +206,7 @@ namespace KaraokeProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
+            ViewBag.ID = taiKhoan.TenNguoiDung;
             if (taiKhoan == null)
             {
                 return HttpNotFound();
