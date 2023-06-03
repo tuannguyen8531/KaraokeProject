@@ -170,7 +170,7 @@
 
             // Gửi yêu cầu AJAX để lấy thông tin dịch vụ từ mã dịch vụ
             $.ajax({
-                url: '@Url.Action("GetThongTinDichVu", "Bill")', // Thay thế ControllerName bằng tên controller của bạn
+                url: '@Url.Action("GetThongTinDichVu", "Bill")', 
                 type: 'GET',
                 data: { maDichVu: maDichVu },
                 success: function (result) {

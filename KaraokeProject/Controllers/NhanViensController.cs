@@ -22,6 +22,62 @@ namespace KaraokeProject.Controllers
             return loai + type.Substring(ma.ToString().Length - 1);
         }
 
+        [HttpGet]
+        public ActionResult Search(string ten = "", string chucVu = "", string gioiTinh = "", string tuoiMin="", string tuoiMax = "", string luongMin = "", string luongMax = "")
+        {
+            ViewBag.ten = ten;
+            var chucVus = db.TaiKhoans.Where(tk => tk.MaTaiKhoan == "TK02" || tk.MaTaiKhoan == "TK03" || tk.MaTaiKhoan == "TK04");
+            ViewBag.chucVu = new SelectList(chucVus, "MaTaiKhoan", "TenNguoiDung");
+            string tMin = tuoiMin, tMax = tuoiMax;
+            string lMin = luongMin, lMax = luongMax;
+            if (tuoiMin == "")
+            {
+                ViewBag.tuoiMin = "";
+                tMin = "0";
+            }
+            else
+            {
+                ViewBag.tuoiMin = tuoiMin;
+                tMin = tuoiMin;
+            }
+            if (tuoiMax == "")
+            {
+                ViewBag.tuoiMax = "";
+                tMax = Int32.MaxValue.ToString();
+            }
+            else
+            {
+                ViewBag.tuoiMax = tuoiMax;
+                tMax = tuoiMax;
+            }
+            if (luongMin == "")
+            {
+                ViewBag.luongMin = "";
+                lMin = "0";
+            }
+            else
+            {
+                ViewBag.luongMin = luongMin;
+                lMin = luongMin;
+            }
+            if (luongMax == "")
+            {
+                ViewBag.luongMax = "";
+                lMax = Int32.MaxValue.ToString();
+            }
+            else
+            {
+                ViewBag.luongMax = luongMax;
+                lMax = luongMax;
+            }
+            var nhanViens = db.NhanViens.SqlQuery("TraCuuNhanVien N'" + ten + "', N'" + chucVu + "', N'" + gioiTinh + "', N'" + tMin + "', N'" + tMax + "', N'" + lMin + "', N'" + lMax + "'");
+            if (nhanViens.Count() == 0)
+            {
+                ViewBag.ThongBao = "Không có thông tin tìm kiếm.";
+            }
+            return View(nhanViens.ToList());
+        }
+
         // GET: NhanViens
         public ActionResult Index()
         {
@@ -88,7 +144,8 @@ namespace KaraokeProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaTaiKhoan = new SelectList(db.TaiKhoans, "MaTaiKhoan", "TenNguoiDung", nhanVien.MaTaiKhoan);
+            var taiKhoans = db.TaiKhoans.Where(tk => tk.MaTaiKhoan == "TK02" || tk.MaTaiKhoan == "TK03" || tk.MaTaiKhoan == "TK04").ToList();
+            ViewBag.MaTaiKhoan = new SelectList(taiKhoans, "MaTaiKhoan", "TenNguoiDung");
             return View(nhanVien);
         }
 

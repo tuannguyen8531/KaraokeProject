@@ -1,0 +1,157 @@
+﻿@model List<KaraokeProject.Models.NhanVien>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int index = 0;
+    string gioiTinh;
+}
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title mt-5">Tìm kiếm Khách hàng</h3>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("Search", "NhanViens", FormMethod.Get))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row formtype">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Tên nhân viên</label>
+                            <input type="text" class="form-control" name="ten" value="@ViewBag.ten">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Chức vụ</label>
+                            @Html.DropDownList("chucVu", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label style="display: block">Giới tính</label>
+                            <input type="radio" class="w3-radio w3-margin-left" value="1" name="gioiTinh" />
+                            Nam
+                            <input type="radio" class="w3-radio w3-margin-left" value="0" name="gioiTinh" />
+                            Nữ
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Tra cứu</label>
+                            <input type="submit" value="Tra cứu" class="btn btn-success btn-block mt-0 search_button" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Tuổi từ</label>
+                            <input type="number" class="form-control" name="tuoiMin" value="@ViewBag.tuoiMin">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>đến</label>
+                            <input type="number" class="form-control" name="tuoiMax" value="@ViewBag.tuoiMax">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Lương từ</label>
+                            <input type="number" class="form-control" name="luongMin" value="@ViewBag.luongMin">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>đến</label>
+                            <input type="number" class="form-control" name="luongMax" value="@ViewBag.luongMax">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body booking_card">
+                    <div class="table-responsive">
+                        <table class="datatable table table-stripped table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã nhân viên</th>
+                                    <th>Tên nhân viên</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Giới tính</th>
+                                    <th>Lương</th>
+                                    <th>Chức vụ</th>
+                                    <th class="text-right">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @{
+                                            index++;
+
+                                        }
+                                        @index
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MaNhanVien)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenNhanVien)
+                                    </td>
+                                    <td>
+                                        @(item.NgaySinh.HasValue ? item.NgaySinh.Value.ToString("dd/MM/yyyy") : "")
+                                    </td>
+                                    <td>
+                                        @if (item.GioiTinh == true)
+                                        {
+                                            gioiTinh = "Nam";
+                                        }
+                                        else
+                                        {
+                                            gioiTinh = "Nữ";
+                                        }
+                                        @gioiTinh
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Luong)
+                                    </td>
+                                    <th>
+                                        @Html.DisplayFor(modelItem => item.TaiKhoan.TenNguoiDung)
+                                    </th>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v ellipse_color"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="@Url.Action("Edit","NhanViens", new { id = item.MaNhanVien })">
+                                                    <i class="fas fa-pencil-alt m-r-5"></i> Sửa
+                                                </a>
+                                                <a class="dropdown-item" href="@Url.Action("Delete","NhanViens", new { id = item.MaNhanVien })">
+                                                    <i class="fas fa-trash-alt m-r-5"></i> Xóa
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

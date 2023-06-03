@@ -22,6 +22,20 @@ namespace KaraokeProject.Controllers
             return loai + type.Substring(ma.ToString().Length - 1);
         }
 
+        [HttpGet]
+        public ActionResult Search(string ten = "", string sdt="", string diaChi="")
+        {
+            ViewBag.ten = ten;
+            ViewBag.sdt = sdt;
+            ViewBag.diaChi = diaChi;
+            var khachHangs = db.KhachHangs.SqlQuery("TraCuuKhachHang N'" + ten + "', N'" + sdt + "', N'" + diaChi + "'");
+            if (khachHangs.Count() == 0)
+            {
+                ViewBag.ThongBao = "Không có thông tin tìm kiếm.";
+            }
+            return View(khachHangs.ToList());
+        }
+
         // GET: KhachHangs
         public ActionResult Index()
         {

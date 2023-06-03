@@ -298,8 +298,7 @@ namespace KaraokeProject.Controllers
             ViewBag.TongKhachHang = soLuongKhachHang;
             ViewBag.TongTien = tongTien;
             ViewBag.TongHoaDon = tongHoaDon;
-            var hoaDons = db.HoaDons.Include(h => h.DatPhong).Include(h => h.NhanVien);
-            return View(hoaDons.ToList());
+            return View(danhSachHoaDon);
         }
     }
 

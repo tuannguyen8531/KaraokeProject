@@ -1,0 +1,149 @@
+﻿@model List<KaraokeProject.Models.DichVu>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int index = 0;
+}
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title mt-5">Tra cứu Dịch vụ</h3>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("Search", "DichVus", FormMethod.Get))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row formtype">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Tên dịch vụ</label>
+                            <input type="text" class="form-control" name="ten" value="@ViewBag.ten">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Loại</label>
+                            @Html.DropDownList("loai", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Nhà cung cấp</label>
+                            @Html.DropDownList("nhaCC", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Tra cứu</label>
+                            <input type="submit" value="Tra cứu" class="btn btn-success btn-block mt-0 search_button" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Đơn giá từ</label>
+                            <input type="number" class="form-control" name="giaMin" value="@ViewBag.giaMin">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>đến</label>
+                            <input type="number" class="form-control" name="giaMax" value="@ViewBag.giaMax">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Số lượng từ</label>
+                            <input type="number" class="form-control" name="soLuongMin" value="@ViewBag.soLuongMin">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>đến</label>
+                            <input type="number" class="form-control" name="soLuongMax" value="@ViewBag.soLuongMax">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body booking_card">
+                    <div class="table-responsive">
+                        <table class="datatable table table-stripped table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã dịch vụ</th>
+                                    <th>Tên dịch vụ</th>
+                                    <th>Loại dịch vụ</th>
+                                    <th>Đơn vị</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng tồn</th>
+                                    <th>Nhà cung cấp</th>
+                                    <th class="text-right">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @{
+                                                index++;
+
+                                            }
+                                            @index
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MaDichVu)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TenDichVu)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LoaiDichVu1.TenLoaiDV)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DonViTinh1.TenDonVi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DonGia)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SoLuongTon)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NhaCungCap1.TenNhaCungCap)
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v ellipse_color"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="@Url.Action("Edit","DichVus", new { id = item.MaDichVu })">
+                                                        <i class="fas fa-pencil-alt m-r-5"></i> Sửa
+                                                    </a>
+                                                    <a class="dropdown-item" href="@Url.Action("Delete","DichVus", new { id = item.MaDichVu })">
+                                                        <i class="fas fa-trash-alt m-r-5"></i> Xóa
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

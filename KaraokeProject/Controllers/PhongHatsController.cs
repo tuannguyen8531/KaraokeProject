@@ -49,7 +49,8 @@ namespace KaraokeProject.Controllers
         {
             ViewBag.ID = getMa("PH");
             ViewBag.LoaiPhong = new SelectList(db.LoaiPhongs, "MaLoaiPhong", "TenLoaiPhong");
-            ViewBag.TrangThai = new SelectList(db.TrangThais, "MaTrangThai", "TenTrangThai");
+            var trangThais = db.TrangThais.Where(tt => tt.MaTrangThai == "SS" || tt.MaTrangThai == "HD" || tt.MaTrangThai == "NC");
+            ViewBag.TrangThai = new SelectList(trangThais, "MaTrangThai", "TenTrangThai");
             return View();
         }
 
@@ -70,7 +71,8 @@ namespace KaraokeProject.Controllers
             }
 
             ViewBag.LoaiPhong = new SelectList(db.LoaiPhongs, "MaLoaiPhong", "TenLoaiPhong", phongHat.LoaiPhong);
-            ViewBag.TrangThai = new SelectList(db.TrangThais, "MaTrangThai", "TenTrangThai", phongHat.TrangThai);
+            var trangThais = db.TrangThais.Where(tt => tt.MaTrangThai == "SS" || tt.MaTrangThai == "HD" || tt.MaTrangThai == "NC");
+            ViewBag.TrangThai = new SelectList(trangThais, "MaTrangThai", "TenTrangThai", phongHat.TrangThai);
             return View(phongHat);
         }
 
@@ -88,7 +90,8 @@ namespace KaraokeProject.Controllers
                 return HttpNotFound();
             }
             ViewBag.LoaiPhong = new SelectList(db.LoaiPhongs, "MaLoaiPhong", "TenLoaiPhong", phongHat.LoaiPhong);
-            ViewBag.TrangThai = new SelectList(db.TrangThais, "MaTrangThai", "TenTrangThai", phongHat.TrangThai);
+            var trangThais = db.TrangThais.Where(tt => tt.MaTrangThai == "SS" || tt.MaTrangThai == "HD" || tt.MaTrangThai == "NC");
+            ViewBag.TrangThai = new SelectList(trangThais, "MaTrangThai", "TenTrangThai", phongHat.TrangThai);
             return View(phongHat);
         }
 

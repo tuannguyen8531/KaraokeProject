@@ -418,6 +418,9 @@
     <Content Include="Views\Bill\ThongKeTonKho.cshtml" />
     <Content Include="Views\Bill\ThongKeDoanhThu.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />
+    <Content Include="Views\DichVus\Search.cshtml" />
+    <Content Include="Views\KhachHangs\Search.cshtml" />
+    <Content Include="Views\NhanViens\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

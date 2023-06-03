@@ -22,6 +22,61 @@ namespace KaraokeProject.Controllers
             return loai + DV.Substring(maDV.ToString().Length - 1);
         }
 
+        [HttpGet]
+        public ActionResult Search(string ten = "", string loai = "", string nhaCC = "", string giaMin = "", string giaMax = "", string soLuongMin = "", string soLuongMax = "")
+        {
+            string gMin = giaMin, gMax = giaMax;
+            string sMin = soLuongMin, sMax = soLuongMax;
+            ViewBag.tenMH = ten;
+            if (giaMin == "")
+            {
+                ViewBag.giaMin = "";
+                gMin = "0";
+            }
+            else
+            {
+                ViewBag.giaMin = giaMin;
+                gMin = giaMin;
+            }
+            if (giaMax == "")
+            {
+                ViewBag.giaMax = "";
+                gMax = Int32.MaxValue.ToString();
+            }
+            else
+            {
+                ViewBag.giaMax = giaMax;
+                gMax = giaMax;
+            }
+            if (soLuongMin == "")
+            {
+                ViewBag.soLuongMin = "";
+                sMin = "0";
+            }
+            else
+            {
+                ViewBag.soLuongMin = soLuongMin;
+                sMin = soLuongMin;
+            }
+            if (soLuongMax == "")
+            {
+                ViewBag.soLuongMax = "";
+                sMax = Int32.MaxValue.ToString();
+            }
+            else
+            {
+                ViewBag.soLuongMax = soLuongMax;
+                sMax = soLuongMax;
+            }
+            ViewBag.loai = new SelectList(db.LoaiDichVus, "MaLoaiDV", "TenLoaiDV");
+            ViewBag.nhaCC = new SelectList(db.NhaCungCaps, "MaNhaCungCap", "TenNhaCungCap");
+            var matHangs = db.DichVus.SqlQuery("TraCuuDichVu N'" + ten + "', '" + loai + "', '" + nhaCC + "', N'" + gMin + "', N'" + gMax + "', N'" + sMin + "', N'" + sMax + "'");
+            if (matHangs.Count() == 0)
+            {
+                ViewBag.ThongBao = "Không có thông tin tìm kiếm.";
+            }
+            return View(matHangs.ToList());
+        }
 
         // GET: DichVus
         public ActionResult Index()

@@ -11,7 +11,8 @@ namespace KaraokeProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class HoaDon
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace KaraokeProject.Models
         }
     
         public string MaHoaDon { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime NgayLapHD { get; set; }
         public string MaNhanVien { get; set; }
         public string MaDatPhong { get; set; }

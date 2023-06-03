@@ -4,6 +4,9 @@
     var nguoiDung = Session["NguoiDung"] as string;
     var phanQuyen = Session["PhanQuyen"] as string;
     var show = "disabled";
+    var datphong = " ";
+    var kho = " ";
+    var khachhang = " ";
     bool login = false;
     if(!string.IsNullOrEmpty(nguoiDung))
     {
@@ -13,6 +16,20 @@
     {
         show = " ";
     }
+    else
+    {
+        if(nguoiDung == "Thu Ngân")
+        {
+            kho = "disabled";
+        }
+        else
+        {
+            datphong = "disabled";
+            khachhang = "disabled";
+        } 
+            
+    }
+
 }
 
 <style>
@@ -200,27 +217,28 @@
                     <ul>
                         <li class="active"> <a href="@Url.Action("Index","TrangChu")"><i class="fas fa-tachometer-alt"></i> <span>Trang Chủ</span></a> </li>
                         <li class="list-divider"></li>
-                        <li class="submenu">
+                        <li class="submenu @datphong">
                             <a href="#"><i class="fas fa-suitcase"></i> <span> Đặt Phòng </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
                                 <li><a href="@Url.Action("Index","DatPhongs")"> Tất cả </a></li>
                                 <li><a href="@Url.Action("Create","DatPhongs")"> Thêm đơn </a></li>
                             </ul>
                         </li>
-                        <li class="submenu">
+                        <li class="submenu @kho">
                             <a href="#"><i class="fas fa-cube"></i> <span> Kho </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
                                 <li><a href="@Url.Action("Index","DichVus")"> Dịch vụ </a></li>
                                 <li><a href="@Url.Action("Index","LoaiDichVus")"> Loại dịch vụ </a></li>
                                 <li><a href="@Url.Action("Index","NhaCungCaps")"> Nhà cung cấp </a></li>
                                 <li><a href="add-booking.html"> Nhập kho </a></li>
+                                <li><a href="@Url.Action("Search", "DichVus")"> Tra cứu </a></li>
                             </ul>
                         </li>
-                        <li class="submenu">
+                        <li class="submenu @khachhang">
                             <a href="#"><i class="fas fa-user"></i> <span> Khách Hàng </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
                                 <li><a href="@Url.Action("Index","KhachHangs")"> Danh sách </a></li>
-                                <li><a href="edit-customer.html"> Tìm kiếm </a></li>
+                                <li><a href="@Url.Action("Search","KhachHangs")"> Tìm kiếm </a></li>
                                 <li><a href="@Url.Action("Create","KhachHangs")"> Thêm mới </a></li>
                             </ul>
                         </li>
@@ -229,7 +247,6 @@
                             <ul class="submenu_class" style="display: none;">
                                 <li><a href="@Url.Action("Index","PhongHats")"> Danh sách </a></li>
                                 <li><a href="@Url.Action("Index","LoaiPhongs")"> Loại phòng </a></li>
-                                <li><a href="edit-room.html"> Tìm kiếm </a></li>
                             </ul>
                         </li>
                         <li class="submenu @show">
