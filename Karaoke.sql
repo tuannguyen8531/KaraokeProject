@@ -1,4 +1,4 @@
-﻿USE MASTER
+﻿﻿USE MASTER
 
 GO
 -- Tạo cơ sở dữ liệu --
@@ -229,36 +229,36 @@ VALUES
 GO
 INSERT INTO DichVu (MaDichVu, TenDichVu, LoaiDichVu, DonViTinh, DonGia, SoLuongTon, NhaCungCap)
 VALUES
-    (N'SP01', N'Cơm cháy', N'TA', N'DV03', 100000, 800, N'NC01'),
-    (N'SP02', N'Bia Heliken', N'BA', N'DV01', 150000, 1500, N'NC02'),
-    (N'SP03', N'Cocacola', N'NN', N'DV04', 200000, 1200, N'NC03'),
-    (N'SP04', N'Mít sấy', N'TC', N'DV04', 120000, 2500, N'NC04'),
-    (N'SP05', N'Đào 45kg', N'OT', N'DV05', 180000, 900, N'NC05'),
-    (N'SP06', N'Bim bim', N'TA', N'DV01', 110000, 1700, N'NC06'),
+    (N'SP01', N'Cơm cháy', N'TA', N'DV03', 10000, 800, N'NC01'),
+    (N'SP02', N'Bia Heliken', N'BA', N'DV02', 150000, 1500, N'NC02'),
+    (N'SP03', N'Cocacola', N'NN', N'DV04', 124000, 1200, N'NC03'),
+    (N'SP04', N'Mít sấy', N'TA', N'DV03', 30000, 2500, N'NC04'),
+    (N'SP05', N'Đào 45kg', N'OT', N'DV07', 1800000, 900, N'NC05'),
+    (N'SP06', N'Bim bim', N'TA', N'DV01', 11000, 1700, N'NC06'),
     (N'SP07', N'Bia Sài Gòn', N'BA', N'DV02', 160000, 1000, N'NC07'),
-    (N'SP08', N'Pepsi', N'NN', N'DV03', 220000, 500, N'NC08'),
-    (N'SP09', N'Xoài cát', N'TC', N'DV04', 130000, 3000, N'NC09'),
-    (N'SP10', N'Xoài non 50kg', N'OT', N'DV05', 190000, 700, N'NC10'),
-    (N'SP11', N'Lẩu thái', N'TA', N'DV01', 105000, 600, N'NC01'),
+    (N'SP08', N'Pepsi', N'NN', N'DV04', 220000, 500, N'NC08'),
+    (N'SP09', N'Xoài cát', N'TC', N'DV06', 30000, 3000, N'NC09'),
+    (N'SP10', N'Xoài non 50kg', N'OT', N'DV07', 1900000, 700, N'NC10'),
+    (N'SP11', N'Lẩu thái', N'TA', N'DV05', 105000, 600, N'NC01'),
     (N'SP12', N'Bia Vina', N'BA', N'DV02', 155000, 1200, N'NC02'),
-    (N'SP13', N'Mirinda', N'NN', N'DV03', 205000, 1800, N'NC03'),
-    (N'SP14', N'Cóc chua', N'TC', N'DV04', 125000, 700, N'NC04'),
-    (N'SP15', N'Spa thư giãn', N'OT', N'DV05', 185000, 1300, N'NC05'),
-    (N'SP16', N'Bít tết', N'TA', N'DV01', 115000, 2000, N'NC06'),
-    (N'SP17', N'Rượu Soju', N'BA', N'DV02', 165000, 800, N'NC07'),
-    (N'SP18', N'Sinh tố lúa mạch', N'NN', N'DV03', 225000, 1400, N'NC08'),
-    (N'SP19', N'Dưa hấu', N'TC', N'DV04', 135000, 1000, N'NC09'),
-    (N'SP20', N'Tay vịn', N'OT', N'DV05', 195000, 1600, N'NC10'),
-	(N'SP21', N'Trà sữa', N'TA', N'DV01', 80000, 500, N'NC01'),
-    (N'SP22', N'Bia Tiger', N'BA', N'DV02', 140000, 800, N'NC02'),
-    (N'SP23', N'Nước tăng lực', N'NN', N'DV03', 180000, 1200, N'NC03'),
-    (N'SP24', N'Rong biển', N'TC', N'DV04', 90000, 2000, N'NC04'),
-    (N'SP25', N'Cam sành', N'OT', N'DV05', 120000, 700, N'NC05'),
-    (N'SP26', N'Mì xào hải sản', N'TA', N'DV01', 95000, 1500, N'NC06'),
+    (N'SP13', N'Mirinda', N'NN', N'DV02', 90000, 1800, N'NC03'),
+    (N'SP14', N'Cóc chua', N'TC', N'DV06', 125000, 700, N'NC04'),
+    (N'SP15', N'Spa thư giãn', N'OT', N'DV07', 1850000, 1300, N'NC05'),
+    (N'SP16', N'Bít tết', N'TA', N'DV06', 115000, 2000, N'NC06'),
+    (N'SP17', N'Rượu Soju', N'BA', N'DV03', 165000, 800, N'NC07'),
+    (N'SP18', N'Sinh tố lúa mạch', N'NN', N'DV02', 22000, 1400, N'NC08'),
+    (N'SP19', N'Dưa hấu', N'TC', N'DV06', 13000, 1000, N'NC09'),
+    (N'SP20', N'Tay vịn', N'OT', N'DV07', 1950000, 1600, N'NC10'),
+	(N'SP21', N'Trà sữa', N'TA', N'DV01', 40000, 500, N'NC01'),
+    (N'SP22', N'Bia Tiger', N'BA', N'DV01', 140000, 800, N'NC02'),
+    (N'SP23', N'Nước tăng lực', N'NN', N'DV04', 18000, 1200, N'NC03'),
+    (N'SP24', N'Rong biển', N'TC', N'DV05', 90000, 2000, N'NC04'),
+    (N'SP25', N'Cam sành', N'OT', N'DV06', 120000, 700, N'NC05'),
+    (N'SP26', N'Mì xào hải sản', N'TA', N'DV05', 95000, 1500, N'NC06'),
     (N'SP27', N'Rượu Hennessy', N'BA', N'DV02', 320000, 600, N'NC07'),
-    (N'SP28', N'Soda chanh', N'NN', N'DV03', 75000, 1000, N'NC08'),
-    (N'SP29', N'Bánh tráng trộn', N'TC', N'DV04', 60000, 1800, N'NC09'),
-    (N'SP30', N'Nho xanh', N'OT', N'DV05', 140000, 900, N'NC10');
+    (N'SP28', N'Soda chanh', N'NN', N'DV01', 75000, 1000, N'NC08'),
+    (N'SP29', N'Bánh tráng trộn', N'TC', N'DV03', 6000, 1800, N'NC09'),
+    (N'SP30', N'Nho xanh', N'OT', N'DV06', 54000, 900, N'NC10');
 GO
 GO
 INSERT INTO PhongHat (MaPhongHat, TenPhongHat, LoaiPhong, TrangThai)
@@ -272,7 +272,27 @@ VALUES
     (N'PH07', N'Thường 103', N'LP01', N'SS'),
     (N'PH08', N'Cao cấp 203', N'LP02', N'HD'),
     (N'PH09', N'Vip 303', N'LP03', N'SS'),
-    (N'PH10', N'Thường 104', N'LP01', N'HD');
+    (N'PH10', N'Thường 104', N'LP01', N'HD'),
+	(N'PH11', N'Vip 102', N'LP01', N'SS'),
+    (N'PH12', N'Cao cấp 103', N'LP02', N'HD'),
+    (N'PH13', N'Vip 104', N'LP03', N'SS'),
+    (N'PH14', N'Thường 109', N'LP01', N'HD'),
+    (N'PH15', N'Cao cấp 203', N'LP02', N'SS'),
+    (N'PH16', N'Vip 305', N'LP03', N'HD'),
+    (N'PH17', N'Thường 107', N'LP01', N'SS'),
+    (N'PH18', N'Cao cấp 205', N'LP02', N'HD'),
+    (N'PH19', N'Vip 307', N'LP03', N'SS'),
+    (N'PH20', N'Thường 206', N'LP01', N'HD'),
+	(N'PH21', N'Thường 107', N'LP01', N'SS'),
+    (N'PH22', N'Cao cấp 208', N'LP02', N'HD'),
+    (N'PH23', N'Vip 309', N'LP03', N'SS'),
+    (N'PH24', N'Thường 402', N'LP01', N'HD'),
+    (N'PH25', N'Cao cấp 401', N'LP02', N'SS'),
+    (N'PH26', N'Vip 404', N'LP03', N'HD'),
+    (N'PH27', N'Thường 405', N'LP01', N'SS'),
+    (N'PH28', N'Cao cấp 501', N'LP02', N'HD'),
+    (N'PH29', N'Vip 502', N'LP03', N'SS'),
+    (N'PH30', N'Thường 503', N'LP01', N'HD');
 GO
 INSERT INTO PhanQuyen (MaPhanQuyen, TenPhanQuyen)
 VALUES
@@ -289,11 +309,21 @@ GO
 INSERT INTO KhachHang (MaKhachHang, TenKhachHang, DiaChi, SoDienThoai, MaTaiKhoan)
 VALUES
 	(N'KH01', N'Khách lẻ', NULL, NULL, NULL),
-    (N'KH02', N'Khách hàng 1', N'Địa chỉ 1', N'0123456789', NULL),
-    (N'KH03', N'Khách hàng 2', N'Địa chỉ 2', N'0123456789', NULL),
-    (N'KH04', N'Khách hàng 3', N'Địa chỉ 3', N'0123456789', NULL),
-    (N'KH05', N'Khách hàng 4', N'Địa chỉ 4', N'0123456789', NULL),
-    (N'KH06', N'Khách hàng 5', N'Địa chỉ 5', N'0123456789', NULL);
+    (N'KH02', N'Nguyễn Đăng Khoa', N'Nha Trang', N'07892415621', NULL),
+    (N'KH03', N'Nguyễn Dương Anh Tuấn', N'Khánh Hòa', N'0125126489', NULL),
+    (N'KH04', N'Hồ Hoàng Kha', N'Ninh Thuận', N'0123453459', NULL),
+    (N'KH05', N'Nguyễn Tuấn Kiệt', N'Khánh Hòa', N'0123475589', NULL),
+    (N'KH06', N'Nguyễn Sanh Quốc Huy', N'Nha Trang', N'0123424683', NULL),
+	(N'KH07', N'Nguyễn Thị Ngọc Trinh', N'Khánh Hòa', NULL, NULL),
+    (N'KH08', N'Lê Kim Ngân', N'Hà Nội', N'07892415621', NULL),
+    (N'KH09', N'Trần Mai Linh', N'Hồ Chí Minh', N'0125126489', NULL),
+    (N'KH10', N'Trương Trường Giang', N'Đà Nẵng', N'0123453459', NULL),
+    (N'KH11', N'Nguyễn Minh Tuấn', N'Hải Phòng', N'0123475589', NULL),
+    (N'KH12', N'Nguyễn Hạnh Phương', N'Cần Thơ', N'0123424683', NULL),
+	(N'KH13', N'Phạm Bích Thảo', N'Thanh Hóa', N'0123453459', NULL),
+    (N'KH14', N'Vũ Linh Chi', N'Nghệ An', N'0123475589', NULL),
+    (N'KH15', N'Hoàng Thanh Hương', N'Đồng Nai', N'0123424683', NULL);
+	
 GO
 INSERT INTO DatPhong (MaDatPhong, GioVao, NgayDat, MaKhachHang, MaPhongHat, TrangThai)
 VALUES
@@ -495,5 +525,3 @@ BEGIN
 	EXEC SP_EXECUTESQL @SqlStr
 END
 EXEC dbo.TraCuuNhanVien N'', N'', N'', 0, 30, 0, 50000000
-
-
