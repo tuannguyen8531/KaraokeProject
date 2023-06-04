@@ -264,7 +264,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Karaoke.sql" />
     <Content Include="Models\Karaoke.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Karaoke.Context.cs</LastGenOutput>

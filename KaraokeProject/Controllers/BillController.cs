@@ -42,13 +42,13 @@ namespace KaraokeProject.Controllers
         public ActionResult CreateBill(string id)
         {
             ViewBag.ID = getMa("HD");
-            ViewBag.MaDatPhong = id;
             Session["MaDatPhong"] = id;
             ViewBag.MaNhanVien = new SelectList(db.NhanViens, "MaNhanVien", "TenNhanVien");
             ViewBag.DichVu = new SelectList(db.DichVus, "MaDichVu", "MaDichVu");
             TimeSpan currentTime = DateTime.Now.TimeOfDay;
             DateTime currentDay = DateTime.Now;
             var dp = db.DatPhongs.FirstOrDefault(t => t.MaDatPhong == id);
+            ViewBag.MaDatPhong = dp.PhongHat.TenPhongHat;
             TimeSpan thoiGian = (TimeSpan)(currentTime - dp.GioVao);
             int phut = (int)thoiGian.TotalMinutes;
             var ph = db.PhongHats.FirstOrDefault(t => t.MaPhongHat == dp.MaPhongHat);
@@ -94,7 +94,6 @@ namespace KaraokeProject.Controllers
                 var dp = db.DatPhongs.FirstOrDefault(t => t.MaDatPhong == id);
                 var ph = db.PhongHats.FirstOrDefault(t => t.MaPhongHat == dp.MaPhongHat);
 
-                // Lưu thông tin hóa đơn vào CSDL
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.MaHoaDon = getMa("HD");
                 hoaDon.NgayLapHD = DateTime.Now;
@@ -103,7 +102,6 @@ namespace KaraokeProject.Controllers
                 hoaDon.GioRa = DateTime.Now.TimeOfDay;
                 hoaDon.TongTien = (int)Session["TienGio"];
                 List<ChiTietHoaDonViewModel> listCTHD = (List<ChiTietHoaDonViewModel>)Session["ChiTietHoaDon"];
-                /*List<ChiTietHoaDonViewModel> listCTHD = chiTietHoaDons;*/
                 int dsDV = listCTHD.Count();
                 if(dsDV!=0)
                 {
@@ -115,7 +113,7 @@ namespace KaraokeProject.Controllers
                     db.HoaDons.Add(hoaDon);
                     db.SaveChanges();
 
-                    // Lưu thông tin chi tiết hóa đơn vào CSDL
+                    
                     foreach (var chiTietHoaDon in viewModel.ChiTietHoaDon)
                     {
                         ChiTietHoaDon chiTiet = new ChiTietHoaDon();
@@ -123,7 +121,7 @@ namespace KaraokeProject.Controllers
                         chiTiet.MaDichVu = chiTietHoaDon.MaDichVu;
                         chiTiet.SoLuongBan = chiTietHoaDon.SoLuong;
                         chiTiet.DonGiaBan = chiTietHoaDon.DonGia;
-                        // Các trường thông tin khác của chi tiết hóa đơn
+                        
 
                         db.ChiTietHoaDons.Add(chiTiet);
                         var dichVu = db.DichVus.FirstOrDefault(dv => dv.MaDichVu == chiTiet.MaDichVu);
@@ -146,10 +144,9 @@ namespace KaraokeProject.Controllers
                 Session.Remove("MaDatPhong");
                 Session.Remove("TienGio");
                 db.SaveChanges();
-                return RedirectToAction("Index", "HoaDons");
+                return RedirectToAction("Index", "DatPhongs");
             }
 
-            // Nếu ModelState.IsValid == false, quay trở lại view với dữ liệu viewModel để hiển thị lỗi
             return View(viewModel);
         }
 
